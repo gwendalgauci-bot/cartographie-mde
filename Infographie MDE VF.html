@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartographie MDE : Flux et Outils (V2)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Palette Definition - Energetic & Playful / Professional Blue */
+        :root {
+            --color-primary: #2563EB; /* Royal Blue */
+            --color-secondary: #06B6D4; /* Cyan */
+            --color-accent: #10B981; /* Emerald */
+            --color-dark: #0F172A; /* Slate 900 */
+            --color-light: #F8FAFC; /* Slate 50 */
+            --color-warning: #FACC15; /* Yellow 400 - For Data Viz/Alerts */
+            --color-action: #F97316; /* Orange 600 - For Actions/Advizeo */
+            --color-target: #8B5CF6; /* Violet 500 - For Target/Vision */
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-light);
+            color: #334155;
+        }
+
+        /* Chart Container Styling - Mandatory Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; /* Base height */
+            max-height: 400px;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Timeline Connector Styling (No SVG) */
+        .timeline-line {
+            width: 4px;
+            background-color: #CBD5E1;
+            margin: 0 auto;
+            min-height: 40px;
+        }
+
+        .arrow-down {
+            text-align: center;
+            font-size: 2rem;
+            color: #94A3B8; /* Slate 400 */
+            line-height: 1;
+            padding: 0.5rem 0;
+            margin-top: -8px;
+            margin-bottom: -8px;
+        }
+        .arrow-down-hyper { color: var(--color-primary); }
+        .arrow-down-market { color: var(--color-accent); }
+
+        .card-level {
+            border-left: 6px solid var(--color-secondary);
+            transition: transform 0.2s;
+        }
+        
+        .card-level:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-hyper {
+            border-color: var(--color-primary);
+        }
+
+        .card-market {
+            border-color: var(--color-accent);
+        }
+        
+        .alert-note {
+            color: #DC2626; /* Red 600 */
+        }
+        
+        .data-viz-indicator {
+            background-color: var(--color-warning);
+            color: #78350F; /* Amber 900 */
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+            margin-top: 5px;
+            border: 1px solid #EAB308;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .action-driver {
+            background-color: var(--color-action);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 600;
+        }
+
+        /* Custom utility classes using palette */
+        .bg-action {
+            background-color: var(--color-action);
+        }
+        .border-action {
+            border-color: var(--color-action);
+        }
+        .text-action {
+            color: var(--color-action);
+        }
+        .border-target {
+            border-color: var(--color-target);
+        }
+        .text-target {
+            color: var(--color-target);
+        }
+
+        /* Style for the Gemini feature button */
+        .gemini-button {
+            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: opacity 0.2s;
+            cursor: pointer;
+        }
+        .gemini-button:hover {
+            opacity: 0.9;
+        }
+
+        .new-block {
+            border: 2px dashed var(--color-target);
+            background-color: #F3E8FF; /* Violet 100 */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-blue-700 to-cyan-600 text-white py-12 px-4 shadow-lg">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Cartographie MDE</h1>
+            <h2 class="text-2xl font-light opacity-90">Flux et Outils : Hypermarchés vs Markets</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-blue-100">
+                Visualisation de la chaîne MDE, de la détection des dérives à l'action.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-16">
+
+        <!-- SECTION 1: TRANSVERSAL OVERVIEW -->
+        <section>
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">1. Vue d'ensemble des Outils</h3>
+                <p class="text-slate-600 max-w-3xl mx-auto">
+                    Les trois grandes familles d'outils (Pilotage, Surveillance, M&amp;V) sont au cœur de la stratégie.
+                </p>
+            </div>
+
+            <!-- HTML Visualization of the Table (Organize) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Pilotage -->
+                <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 text-2xl mb-4 mx-auto font-bold">P</div>
+                    <h4 class="text-xl font-bold text-center mb-4">Pilotage &amp; Actionneurs</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-50 p-3 rounded">
+                            <strong class="text-blue-800 block mb-1">Hyper</strong>
+                            GTB Sensinov, BeeBryte (Froid), Frigoristes
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded">
+                            <strong class="text-teal-800 block mb-1">Market</strong>
+                            GTB EFICIA (Site), Frigoristes 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surveillance (Data Viz Focus) -->
+                <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-cyan-500">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100 text-cyan-600 text-2xl mb-4 mx-auto font-bold">S</div>
+                    <h4 class="text-xl font-bold text-center mb-4">Surveillance &amp; Anomalies</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-50 p-3 rounded">
+                            <strong class="text-blue-800 block mb-1">
+                                Hyper <span class="data-viz-indicator ml-1">DATA VIZ</span>
+                            </strong>
+                            Anomalies Sensinov + dashboards Grafana (CVC, eau, comptage) + rapport hebdomadaire talon électrique Advizeo
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded">
+                            <strong class="text-teal-800 block mb-1">
+                                Market <span class="data-viz-indicator ml-1">DATA VIZ</span>
+                            </strong>
+                            EFICIA Energy Center (tickets) + dashboards de supervision Eficia (CVC, comptage, programmes horaires, eau)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MDE Data (IPMVP/SAVEe) -->
+                <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-action">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 text-action text-2xl mb-4 mx-auto font-bold">D</div>
+                    <h4 class="text-xl font-bold text-center mb-4">MDE par la Donnée (M&amp;V)</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-slate-50 p-3 rounded">
+                            <strong class="text-action block mb-1">Hyper &amp; Market</strong>
+                            <p>Advizeo / SAVEe</p>
+                            <ul class="list-disc list-inside text-slate-500 mt-1 text-xs">
+                                <li>IPMVP (Option C) / DJU</li>
+                                <li>TOP/FLOP</li>
+                                <li>Pilotage Plan d'Actions (SAVEe)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE DETAILED FLOW (HYPER VS MARKET) -->
+        <section>
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-slate-800">2. Flux Détaillés et Niveaux d'Action</h3>
+            <p class="text-slate-600 mt-2">Comparaison niveau par niveau de la chaîne de décision et d'action.</p>
+            </div>
+
+            <!-- DUAL COLUMN LAYOUT START -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
+                
+                <!-- Vertical Divider (Visual only for large screens) -->
+                <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 -ml-px"></div>
+
+                <!-- LEFT COLUMN: HYPERMARCHÉS -->
+                <div class="flex flex-col space-y-8">
+                    <div class="text-center bg-blue-600 text-white py-2 rounded-t-lg shadow">
+                        <h3 class="text-2xl font-bold">HYPERMARCHÉS <span class="text-sm font-normal block pt-1">(Pilotage Local + Soutien CMM Maintenance)</span></h3>
+                    </div>
+
+                    <!-- N0 Hyper -->
+                    <div class="relative pl-4">
+                        <div class="card-level card-hyper bg-white p-6 rounded shadow-md">
+                            <span class="absolute -left-3 top-6 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">N0</span>
+                            <h4 class="text-lg font-bold text-blue-900 mb-2">Magasin Hyper (Exploitation)</h4>
+                            <p class="text-sm text-slate-600 mb-3"><strong>Acteurs&nbsp;:</strong> Directeur, Managers, Technique Site</p>
+                            <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+                                <li>Application consignes CMM/DTR</li>
+                                <li>Forçages ponctuels (via GTB/bypass)</li>
+                                <li>Remontée problèmes (fuites, inconfort)</li>
+                            </ul>
+                            <div class="mt-3 text-xs bg-blue-50 text-blue-800 p-2 rounded">
+                                <strong>Flux&nbsp;:</strong> Reçoit consignes CMM/DTR ⇄ Envoie alertes terrain.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-down arrow-down-hyper">↓</div>
+
+                    <!-- N1 Hyper -->
+                    <div class="relative pl-4">
+                        <div class="card-level card-hyper bg-white p-6 rounded shadow-md">
+                            <span class="absolute -left-3 top-6 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">N1</span>
+                            <h4 class="text-lg font-bold text-blue-900 mb-2">Pilotage Installations &amp; Exécution</h4>
+                            <div class="space-y-4 text-sm">
+                                <div class="border-l-2 border-blue-200 pl-3">
+                                    <strong class="text-sm text-slate-900">GTB Sensinov</strong>
+                                    <p class="text-xs text-slate-600">Programmation détaillée CVC/Éclairage. Journal d'actions complet (traçabilité).</p>
+                                </div>
+                                <div class="border-l-2 border-blue-200 pl-3">
+                                    <strong class="text-sm text-slate-900">BeeBryte (Optimisation Froid)</strong>
+                                    <p class="text-xs text-slate-600">Analyse continue, détection dérives, modulation algorithmique du froid.</p>
+                                </div>
+                                <div class="border-l-2 border-blue-200 pl-3">
+                                    <strong class="text-sm text-slate-900">Frigoristes / Prestataires</strong>
+                                    <p class="text-xs text-slate-600">Réglages précis, exécution actions MDE/curatif.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-down arrow-down-hyper">↓</div>
+
+                    <!-- N2 Hyper (UPDATED: Surveillance / Dérives) -->
+                    <div class="relative pl-4">
+                        <div class="card-level card-hyper bg-white p-6 rounded shadow-md">
+                            <span class="absolute -left-3 top-6 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">N2</span>
+                            <h4 class="text-lg font-bold text-blue-900 mb-3">Surveillance &amp; Détection des Dérives</h4>
+                            <p class="text-sm font-semibold text-slate-800 mb-2">
+                                Outils de Détection <span class="data-viz-indicator ml-1">DATA VIZ</span> :
+                            </p>
+                            <ul class="text-sm space-y-1 list-disc list-inside text-blue-700 bg-blue-50 p-3 rounded">
+                                <li><strong>Sensinov (Module Anomalies)</strong> : Détection auto (talon, conso anormale).</li>
+                                <li><strong>Dashboards Grafana</strong> : Visualisation CVC / Eau / Comptage (état rooftops, sondes, consignes, courbes de charge).</li>
+                                <li><strong>Rapport Advizeo</strong> : Surveillance talon électrique (hebdo).</li>
+                            </ul>
+                            <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-300">
+                                <strong>Rôle clé CMM &amp; Manager Énergie :</strong> Utilisation directe de Grafana/Sensinov pour repérer les dérives (forçage, erreur de prog.) et <strong>prioriser les actions</strong> avant formalisation.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="arrow-down arrow-down-hyper">↓</div>
+
+                    <!-- N2-N3 Hyper (UPDATED: Advizeo & CMM Focus) -->
+                    <div class="relative pl-4">
+                        <div class="card-level bg-white p-6 rounded shadow-md border-l-8 border-action">
+                            <span class="absolute -left-3 top-6 bg-action text-white text-xs font-bold px-2 py-1 rounded">N2-3</span>
+                            <h4 class="text-lg font-bold text-action mb-2">Pilotage Performance &amp; Plan d'Actions MDE</h4>
+                            <div class="mb-3 text-sm">
+                                <strong class="action-driver">ADVIZEO / SAVEE :</strong> Pilote de la performance MDE (IPMVP Option C), Consolidation des gains, TOP/FLOP.
+                            </div>
+                            <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+                                <li>Formalisation des signaux (Sensinov/Grafana/Talon) en actions SAVEe.</li>
+                                <li><strong>Défi central :</strong> La MDE repose beaucoup sur le CMM qui gère déjà la maintenance, les prestataires et les travaux, en plus de la MDE. Peu de temps pour l'analyse fine.</li>
+                                <li><strong>Dispersion :</strong> La plupart des actions sont dans Savee, mais le suivi reste éclaté (GTB, mails, Excel, comptes rendus).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: MARKETS -->
+                <div class="flex flex-col space-y-8">
+                    <div class="text-center bg-teal-600 text-white py-2 rounded-t-lg shadow">
+                        <h3 class="text-2xl font-bold">MARKETS <span class="text-sm font-normal block pt-1">(Surveillance Centralisée Eficia)</span></h3>
+                    </div>
+
+                    <!-- N0 Market -->
+                    <div class="relative pl-4">
+                        <div class="card-level card-market bg-white p-6 rounded shadow-md">
+                            <span class="absolute -left-3 top-6 bg-teal-600 text-white text-xs font-bold px-2 py-1 rounded">N0</span>
+                            <h4 class="text-lg font-bold text-teal-900 mb-2">Magasin Market (Exploitation)</h4>
+                            <p class="text-sm text-slate-600 mb-3"><strong>Acteurs&nbsp;:</strong> Directeur, Équipes Rayon</p>
+                            <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+                                <li>Application consignes Energy Center</li>
+                                <li>Remontée pannes/problèmes Froid/CVC</li>
+                            </ul>
+                            <div class="mt-3 text-xs bg-teal-50 text-teal-800 p-2 rounded">
+                                <strong>Flux&nbsp;:</strong> Reçoit consignes Energy Center ⇄ Retours tickets.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-down arrow-down-market">↓</div>
+
+                    <!-- N1 Market -->
+                    <div class="relative pl-4">
+                        <div class="card-level card-market bg-white p-6 rounded shadow-md">
+                            <span class="absolute -left-3 top-6 bg-teal-600 text-white text-xs font-bold px-2 py-1 rounded">N1</span>
+                            <h4 class="text-lg font-bold text-teal-900 mb-2">Pilotage GTB Local &amp; Exécution</h4>
+                            <div class="space-y-4 text-sm">
+                                <div class="border-l-2 border-teal-200 pl-3">
+                                    <strong class="text-sm text-slate-900">GTB EFICIA (Site)</strong>
+                                    <p class="text-xs text-slate-600">Actionneurs TGBT/DALI. Programmation locale (horaires, consignes).</p>
+                                </div>
+                                <div class="border-l-2 border-teal-200 pl-3">
+                                    <strong class="text-sm text-slate-900">Frigoristes / Prestataires</strong>
+                                    <p class="text-xs text-slate-600">Interventions sur alerte Energy Center/Advizeo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-down arrow-down-market">↓</div>
+
+                    <!-- N2 Market (UPDATED: Surveillance / Dérives) -->
+                    <div class="relative pl-4">
+                        <div class="card-level card-market bg-white p-6 rounded shadow-md">
+                            <span class="absolute -left-3 top-6 bg-teal-600 text-white text-xs font-bold px-2 py-1 rounded">N2</span>
+                            <h4 class="text-lg font-bold text-teal-900 mb-3">Surveillance &amp; Détection des Dérives</h4>
+                            <div class="text-sm font-semibold text-slate-800 mb-2">
+                                <strong>Organisation dédiée :</strong> vraie équipe MDE chez Eficia.
+                            </div>
+                            <ul class="text-sm space-y-1 list-disc list-inside text-teal-700 bg-teal-50 p-3 rounded">
+                                <li><strong>EFICIA Energy Center :</strong> (Tickets) Détection auto/manuelle (forçages, pertes de com., conso. nocturnes anormales, coffrets non alimentés...).</li>
+                                <li><strong>Dataviz Eficia <span class="data-viz-indicator ml-1">DATA VIZ</span> :</strong> pages de supervision CVC, comptage, programmes horaires, eau.</li>
+                            </ul>
+                            <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-300">
+                                <strong>Rôle clé Energy Center / CMM / Manager Énergie :</strong> ces vues sont utilisées pour repérer les sites en dérive et générer des tickets d'action.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-down arrow-down-market">↓</div>
+
+                    <!-- N2-N3 Market (UPDATED: Advizeo & Energy Center Focus) -->
+                    <div class="relative pl-4">
+                        <div class="card-level bg-white p-6 rounded shadow-md border-l-8 border-action">
+                            <span class="absolute -left-3 top-6 bg-action text-white text-xs font-bold px-2 py-1 rounded">N2-3</span>
+                            <h4 class="text-lg font-bold text-action mb-2">Pilotage Performance &amp; Plan d'Actions MDE</h4>
+                            <div class="mb-3 text-sm">
+                                <strong class="action-driver">ADVIZEO / SAVEE :</strong> Pilote de la performance MDE (IPMVP Option C), consolidation des gains, TOP/FLOP.
+                            </div>
+                            <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
+                                <li>Formalisation des actions issues de l'Energy Center/Dataviz en actions SAVEe.</li>
+                                <li><strong>Rôle du Manager Énergie :</strong> priorisation des sites (TOP/FLOP) et validation des actions régionales.</li>
+                                <li><strong>Dispersion :</strong> la plupart des actions sont dans Savee, mais le suivi reste éclaté (Eficia, mails, Excel).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div> <!-- End Right Column -->
+
+            </div> <!-- End Grid -->
+
+            <!-- BLOCK: RESSOURCE ÉNERGIE DÉDIÉE -->
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="arrow-down mb-6 text-slate-700">↓ (N3)</div>
+                <div class="bg-gray-100 rounded-xl shadow-lg p-6 border-l-8 border-cyan-500">
+                    <h3 class="text-xl font-bold text-cyan-700 mb-3 flex items-center">
+                        <svg class="w-6 h-6 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v16l-12 3zm0 0L3 17"></path></svg>
+                        Ressource Énergie dédiée (Energy Manager régional / Référent)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <strong class="text-slate-800 block mb-1">Rôle principal</strong>
+                            <ul class="list-disc list-inside text-slate-700 space-y-1">
+                                <li>Exploiter les dashboards (Grafana, Eficia) et Advizeo pour analyser les UES (Froid, CVC, Éclairage, Eau...).</li>
+                                <li>Animer le plan d’actions MDE avec les CMM.</li>
+                                <li>Préparer le reporting MDE pour la revue de management.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-gray-200">
+                            <strong class="text-red-600 block mb-1">Constat (Nécessité)</strong>
+                            <p class="text-xs text-red-700 italic">
+                                Un CMM qui gère déjà les sujets travaux, curatif, prestataires, incidents, etc. ne peut pas, en plus, faire une analyse fine par UES pour toute la région. L'analyse fine nécessite une ressource dédiée.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BLOCK: VISION CIBLE N3 - RÉFÉRENTIEL UNIQUE D'ACTIONS MDE -->
+            <div class="mt-16">
+                <div class="bg-gradient-to-r from-violet-600 to-purple-400 text-white rounded-xl shadow-xl p-8 border-l-8 border-white">
+                    <h3 class="text-3xl font-bold mb-4 flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        N3 - Vision cible : Référentiel unique d'actions MDE
+                    </h3>
+                    <p class="text-purple-100 mb-6">
+                        L'objectif est de centraliser la gestion de toutes les actions MDE pour un suivi cohérent par Unité Élémentaire de Suivi (UES) et par site, potentiellement dans un outil comme Qlik.
+                    </p>
+                    <ul class="text-sm space-y-2 list-disc list-inside text-white bg-purple-600 p-4 rounded-lg shadow-inner">
+                        <li>Toutes les actions MDE sont centralisées dans <strong>UN SEUL outil (Qlik, Savee ou autre)</strong>.</li>
+                        <li><strong>Champs obligatoires :</strong> Site, Territoire, Format, <strong>UES (Froid, CVC, Éclairage, Eau, Force...)</strong>, Origine (anomalie Sensinov/Grafana, ticket Eficia, audit, idée magasin...), Statut, gains estimés et mesurés.</li>
+                        <li>Cet outil est alimenté <strong>automatiquement</strong> par Sensinov/Grafana, EFICIA et Advizeo.</li>
+                    </ul>
+                </div>
+
+                <!-- SCENARIOS -->
+                <h4 class="text-2xl font-bold text-slate-800 mt-12 mb-6 text-center">3. Scénarios pour le Référentiel Unique</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Scenario 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-action">
+                        <h5 class="text-xl font-bold text-action mb-3">Scénario 1 : Advizeo / Savee central</h5>
+                        <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
+                            <li>Advizeo/Savee reste l’outil central de suivi des actions MDE et des gains IPMVP.</li>
+                            <li>Sensinov/Grafana et EFICIA poussent leurs dérives et tickets sous forme d’actions standardisées dans Savee via des API.</li>
+                            <li>Faible impact sur les outils GTB, consolidation maximale.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Scenario 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-600">
+                        <h5 class="text-xl font-bold text-blue-600 mb-3">Scénario 2 : GTB / Dataviz au centre</h5>
+                        <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
+                            <li>Les GTBistes (Sensinov, Eficia) développent un module "plan d’actions" complet dans leurs écosystèmes.</li>
+                            <li>Advizeo se concentre sur le calcul et la consolidation des gains IPMVP à partir des actions issues des GTB (API).</li>
+                            <li>Risque de double saisie ou de complexité d'intégration entre les deux GTB/Dataviz.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Scenario 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-target">
+                        <h5 class="text-xl font-bold text-target mb-3">Scénario 3 : Outil Carrefour dédié (Energy Board / Qlik)</h5>
+                        <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
+                            <li>Outil interne unique (comme Qlik) qui agrège toutes les actions MDE, indépendant des prestataires.</li>
+                            <li>Intégrations (API) avec Sensinov/Grafana, EFICIA et Advizeo pour remonter anomalies, tickets et gains.</li>
+                            <li>Coût de développement initial élevé, mais contrôle total sur la donnée et la structure (UES).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <h4 class="text-xl font-bold text-slate-800">Conclusion : la valeur est dans l'analyse par UES et la centralisation de l'action.</h4>
+            </div>
+
+        </section>
+
+        <!-- SECTION 4: GEMINI LLM DECODER FEATURE -->
+        <section class="bg-slate-900 text-white rounded-xl shadow-xl p-8 mb-16 mt-16">
+            <h3 class="text-2xl font-bold text-cyan-400 mb-4 border-b border-slate-700 pb-2">4. Décodeur terminologique MDE (piloté par Gemini)</h3>
+            <p class="text-slate-400 mb-6">
+                Saisissez un terme technique de l'infographie (ex&nbsp;: UES, IPMVP, Grafana, CMM) pour obtenir une explication simple et contextualisée par l'Intelligence Artificielle.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <input type="text" id="termInput" placeholder="Terme technique à simplifier (ex: IPMVP)" class="flex-grow p-3 rounded text-slate-900 placeholder-slate-500 border-2 border-blue-600 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                <button id="simplifyButton" class="gemini-button flex-shrink-0 flex items-center justify-center" onclick="fetchSimplifiedDefinition()">
+                    ✨ Simplifier ce terme
+                </button>
+            </div>
+
+            <div id="resultContainer" class="bg-slate-800 p-4 rounded-lg border border-slate-700 min-h-[100px] flex items-center justify-center">
+                <p id="resultText" class="text-slate-300 italic">La définition simplifiée apparaîtra ici.</p>
+                <div id="loadingIndicator" class="hidden">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION 5: IPMVP ASSISTANT FEATURE -->
+        <section class="bg-blue-900 text-white rounded-xl shadow-xl p-8 mb-16">
+            <h3 class="text-2xl font-bold text-yellow-400 mb-4 border-b border-blue-700 pb-2">5. Assistant d'analyse d'économies IPMVP</h3>
+            <p class="text-slate-300 mb-6">
+                Calculez les économies brutes et obtenez une explication sur la normalisation des données, étape clé de la méthodologie IPMVP (International Performance Measurement and Verification Protocol).
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div>
+                    <label for="baseKwh" class="block text-sm font-medium text-slate-400">Conso. de référence (kWh)</label>
+                    <input type="number" id="baseKwh" placeholder="Ex: 500000" class="w-full p-2 rounded text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-500 mt-1">
+                </div>
+                <div>
+                    <label for="reportKwh" class="block text-sm font-medium text-slate-400">Conso. période rapport (kWh)</label>
+                    <input type="number" id="reportKwh" placeholder="Ex: 400000" class="w-full p-2 rounded text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-500 mt-1">
+                </div>
+                <div>
+                    <label for="djuFactor" class="block text-sm font-medium text-slate-400">Facteur d'influence (DJU Base / DJU Rapport)</label>
+                    <input type="number" id="djuFactor" step="0.01" placeholder="Ex: 1.15" class="w-full p-2 rounded text-slate-900 focus:outline-none focus:ring-2 focus:ring-yellow-500 mt-1">
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <button id="analyzeIpMvpButton" class="gemini-button flex-shrink-0 flex items-center justify-center bg-yellow-600 hover:bg-yellow-700" onclick="analyzeIpMvp()">
+                    ✨ Analyser les économies IPMVP
+                </button>
+            </div>
+
+            <div id="ipmvpResultContainer" class="bg-blue-800 p-4 rounded-lg border border-blue-700 min-h-[120px]">
+                <p id="ipmvpResultText" class="text-slate-300 italic">Les résultats de l'analyse IPMVP (économies brutes et normalisation) apparaîtront ici.</p>
+                <div id="ipmvpLoadingIndicator" class="hidden text-center mt-2">
+                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400 mx-auto"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-white text-center py-6 mt-12">
+        <p class="text-sm">Infographie Maîtrise de la Demande en Énergie (MDE) - 2025</p>
+    </footer>
+
+    <script>
+        // Utility function for exponential backoff retry logic
+        async function fetchWithRetry(apiUrl, payload, retries = 3, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.status === 429) { // Too Many Requests
+                        if (i < retries - 1) {
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            delay *= 2; // Exponential backoff
+                            continue;
+                        }
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(`API call failed with status: ${response.status}`);
+                    }
+
+                    return response.json();
+                } catch (error) {
+                    if (i === retries - 1) throw error;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        const apiKey = ""; // API Key is provided by the environment
+        const LLM_MODEL = "gemini-2.5-flash-preview-09-2025";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${LLM_MODEL}:generateContent?key=${apiKey}`;
+
+        /**
+         * Section 4: Fetches a simplified definition for a technical term using Gemini.
+         */
+        async function fetchSimplifiedDefinition() {
+            const term = document.getElementById('termInput').value.trim();
+            const resultTextElement = document.getElementById('resultText');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+
+            if (!term) {
+                resultTextElement.textContent = "Veuillez entrer un terme à simplifier.";
+                return;
+            }
+
+            loadingIndicator.classList.remove('hidden');
+            resultTextElement.classList.add('hidden');
+
+            const systemPrompt = "Vous êtes un expert en Maîtrise de la Demande en Énergie (MDE) et en efficacité énergétique. Expliquez le terme technique demandé en une seule phrase simple et professionnelle, en le contextualisant si possible pour le secteur de la grande distribution ou des services publics. Votre réponse doit être directe et ne contenir aucune introduction ou conclusion.";
+            const userQuery = `Définissez et contextualisez le terme MDE suivant : ${term}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                tools: [{ "google_search": {} }],
+            };
+
+            try {
+                const result = await fetchWithRetry(apiUrl, payload);
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Erreur : impossible de générer la définition.";
+
+                resultTextElement.textContent = text;
+            } catch (error) {
+                console.error("Erreur de l'API Gemini:", error);
+                resultTextElement.textContent = "Une erreur est survenue lors de la communication avec l'IA. Veuillez réessayer.";
+            } finally {
+                loadingIndicator.classList.add('hidden');
+                resultTextElement.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Section 5: Calculates gross savings and asks Gemini to explain IPMVP normalization.
+         */
+        async function analyzeIpMvp() {
+            const baseKwhInput = document.getElementById('baseKwh').value;
+            const reportKwhInput = document.getElementById('reportKwh').value;
+            const djuFactorInput = document.getElementById('djuFactor').value;
+
+            const baseKwh = parseFloat(baseKwhInput);
+            const reportKwh = parseFloat(reportKwhInput);
+            const djuFactor = parseFloat(djuFactorInput);
+
+            const resultTextElement = document.getElementById('ipmvpResultText');
+            const loadingIndicator = document.getElementById('ipmvpLoadingIndicator');
+
+            if (isNaN(baseKwh) || isNaN(reportKwh) || isNaN(djuFactor) || baseKwh <= 0) {
+                resultTextElement.textContent = "Veuillez entrer des valeurs numériques valides pour les 3 champs.";
+                return;
+            }
+
+            loadingIndicator.classList.remove('hidden');
+            resultTextElement.textContent = "";
+
+            const grossSavings = baseKwh - reportKwh;
+            const percentageSavings = ((grossSavings / baseKwh) * 100).toFixed(2);
+            
+            // IPMVP Normalization Logic (Simplified)
+            const estimatedAdjustedConsumption = reportKwh * djuFactor;
+            const estimatedAdjustedSavings = baseKwh - estimatedAdjustedConsumption;
+            const adjustedPercentageSavings = ((estimatedAdjustedSavings / baseKwh) * 100).toFixed(2);
+            
+            const calculatedText = `Économies brutes calculées : ${grossSavings.toLocaleString('fr-FR')} kWh (${percentageSavings} %).`;
+            
+            const systemPrompt = "Vous êtes un expert certifié en protocole IPMVP. Votre rôle est d'expliquer l'importance de la normalisation des données (comme l'ajustement aux DJU) après avoir présenté les économies brutes. Fournissez une analyse concise en deux parties : 1) Les économies brutes et 2) l'explication de la normalisation IPMVP.";
+            
+            const userQuery = `J'ai une consommation de référence (Base) de ${baseKwh.toLocaleString('fr-FR')} kWh et une consommation en période de rapport (Report) de ${reportKwh.toLocaleString('fr-FR')} kWh. Le facteur d'ajustement (DJU Base / DJU Report) est de ${djuFactor}. 
+            Les économies brutes sont de ${grossSavings.toLocaleString('fr-FR')} kWh.
+            Expliquez maintenant comment l'IPMVP normalise ces données, en utilisant le facteur d'influence ${djuFactor}, et pourquoi cette étape est cruciale pour obtenir une économie vérifiable.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                tools: [{ "google_search": {} }],
+            };
+
+            try {
+                const result = await fetchWithRetry(apiUrl, payload);
+                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Erreur : impossible de générer l'analyse.";
+
+                resultTextElement.innerHTML = `
+                    <p class="text-yellow-300 font-bold mb-3">${calculatedText}</p>
+                    <p class="text-slate-300">${text}</p>
+                `;
+            } catch (error) {
+                console.error("Erreur de l'API Gemini:", error);
+                resultTextElement.textContent = "Une erreur est survenue lors de l'analyse IPMVP. Veuillez vérifier les entrées et réessayer.";
+            } finally {
+                loadingIndicator.classList.add('hidden');
+            }
+        }
+        
+        // --- Chart Initialization Logic ---
+        window.onload = function() {
+            // Placeholder for chart initialization (kept empty pour éviter les erreurs Chart.js si aucun canvas n'est présent)
+        };
+    </script>
+</body>
+</html>
