@@ -600,105 +600,6 @@
         const LLM_MODEL = "gemini-2.5-flash-preview-09-2025";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${LLM_MODEL}:generateContent?key=${apiKey}`;
 
-        /**
-         * Section 4: Fetches a simplified definition for a technical term using Gemini.
-         */
-        async function fetchSimplifiedDefinition() {
-            const term = document.getElementById('termInput').value.trim();
-            const resultTextElement = document.getElementById('resultText');
-            const loadingIndicator = document.getElementById('loadingIndicator');
-
-            if (!term) {
-                resultTextElement.textContent = "Veuillez entrer un terme à simplifier.";
-                return;
-            }
-
-            loadingIndicator.classList.remove('hidden');
-            resultTextElement.classList.add('hidden');
-
-            const systemPrompt = "Vous êtes un expert en Maîtrise de la Demande en Énergie (MDE) et en efficacité énergétique. Expliquez le terme technique demandé en une seule phrase simple et professionnelle, en le contextualisant si possible pour le secteur de la grande distribution ou des services publics. Votre réponse doit être directe et ne contenir aucune introduction ou conclusion.";
-            const userQuery = `Définissez et contextualisez le terme MDE suivant : ${term}`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-                tools: [{ "google_search": {} }],
-            };
-
-            try {
-                const result = await fetchWithRetry(apiUrl, payload);
-                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Erreur : impossible de générer la définition.";
-
-                resultTextElement.textContent = text;
-            } catch (error) {
-                console.error("Erreur de l'API Gemini:", error);
-                resultTextElement.textContent = "Une erreur est survenue lors de la communication avec l'IA. Veuillez réessayer.";
-            } finally {
-                loadingIndicator.classList.add('hidden');
-                resultTextElement.classList.remove('hidden');
-            }
-        }
-
-        /**
-         * Section 5: Calculates gross savings and asks Gemini to explain IPMVP normalization.
-         */
-        async function analyzeIpMvp() {
-            const baseKwhInput = document.getElementById('baseKwh').value;
-            const reportKwhInput = document.getElementById('reportKwh').value;
-            const djuFactorInput = document.getElementById('djuFactor').value;
-
-            const baseKwh = parseFloat(baseKwhInput);
-            const reportKwh = parseFloat(reportKwhInput);
-            const djuFactor = parseFloat(djuFactorInput);
-
-            const resultTextElement = document.getElementById('ipmvpResultText');
-            const loadingIndicator = document.getElementById('ipmvpLoadingIndicator');
-
-            if (isNaN(baseKwh) || isNaN(reportKwh) || isNaN(djuFactor) || baseKwh <= 0) {
-                resultTextElement.textContent = "Veuillez entrer des valeurs numériques valides pour les 3 champs.";
-                return;
-            }
-
-            loadingIndicator.classList.remove('hidden');
-            resultTextElement.textContent = "";
-
-            const grossSavings = baseKwh - reportKwh;
-            const percentageSavings = ((grossSavings / baseKwh) * 100).toFixed(2);
-            
-            // IPMVP Normalization Logic (Simplified)
-            const estimatedAdjustedConsumption = reportKwh * djuFactor;
-            const estimatedAdjustedSavings = baseKwh - estimatedAdjustedConsumption;
-            const adjustedPercentageSavings = ((estimatedAdjustedSavings / baseKwh) * 100).toFixed(2);
-            
-            const calculatedText = `Économies brutes calculées : ${grossSavings.toLocaleString('fr-FR')} kWh (${percentageSavings} %).`;
-            
-            const systemPrompt = "Vous êtes un expert certifié en protocole IPMVP. Votre rôle est d'expliquer l'importance de la normalisation des données (comme l'ajustement aux DJU) après avoir présenté les économies brutes. Fournissez une analyse concise en deux parties : 1) Les économies brutes et 2) l'explication de la normalisation IPMVP.";
-            
-            const userQuery = `J'ai une consommation de référence (Base) de ${baseKwh.toLocaleString('fr-FR')} kWh et une consommation en période de rapport (Report) de ${reportKwh.toLocaleString('fr-FR')} kWh. Le facteur d'ajustement (DJU Base / DJU Report) est de ${djuFactor}. 
-            Les économies brutes sont de ${grossSavings.toLocaleString('fr-FR')} kWh.
-            Expliquez maintenant comment l'IPMVP normalise ces données, en utilisant le facteur d'influence ${djuFactor}, et pourquoi cette étape est cruciale pour obtenir une économie vérifiable.`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-                tools: [{ "google_search": {} }],
-            };
-
-            try {
-                const result = await fetchWithRetry(apiUrl, payload);
-                const text = result?.candidates?.[0]?.content?.parts?.[0]?.text || "Erreur : impossible de générer l'analyse.";
-
-                resultTextElement.innerHTML = `
-                    <p class="text-yellow-300 font-bold mb-3">${calculatedText}</p>
-                    <p class="text-slate-300">${text}</p>
-                `;
-            } catch (error) {
-                console.error("Erreur de l'API Gemini:", error);
-                resultTextElement.textContent = "Une erreur est survenue lors de l'analyse IPMVP. Veuillez vérifier les entrées et réessayer.";
-            } finally {
-                loadingIndicator.classList.add('hidden');
-            }
-        }
         
         // --- Chart Initialization Logic ---
         window.onload = function() {
@@ -707,3 +608,4 @@
     </script>
 </body>
 </html>
+
