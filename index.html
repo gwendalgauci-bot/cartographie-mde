@@ -7,49 +7,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Custom Palette Definition - Energetic & Playful / Professional Blue */
         :root {
-            --color-primary: #2563EB; /* Royal Blue */
-            --color-secondary: #06B6D4; /* Cyan */
-            --color-accent: #10B981; /* Emerald */
-            --color-dark: #0F172A; /* Slate 900 */
-            --color-light: #F8FAFC; /* Slate 50 */
-            --color-warning: #FACC15; /* Yellow 400 - For Data Viz/Alerts */
-            --color-action: #F97316; /* Orange 600 - For Actions/Advizeo */
-            --color-target: #8B5CF6; /* Violet 500 - For Target/Vision */
+            --color-primary: #2563EB;
+            --color-secondary: #06B6D4;
+            --color-accent: #10B981;
+            --color-dark: #0F172A;
+            --color-light: #F8FAFC;
+            --color-warning: #FACC15;
+            --color-action: #F97316;
+            --color-target: #8B5CF6;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--color-light);
             color: #334155;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-            background: white;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-
-        .timeline-line {
-            width: 4px;
-            background-color: #CBD5E1;
-            margin: 0 auto;
-            min-height: 40px;
         }
 
         .arrow-down {
@@ -95,30 +67,11 @@
             font-weight: 600;
         }
 
-        .bg-action { background-color: var(--color-action); }
-        .border-action { border-color: var(--color-action); }
-        .text-action { color: var(--color-action); }
-        .border-target { border-color: var(--color-target); }
-        .text-target { color: var(--color-target); }
-
-        .gemini-button {
-            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            transition: opacity 0.2s;
-            cursor: pointer;
-        }
-        .gemini-button:hover { opacity: 0.9; }
-
-        .new-block {
-            border: 2px dashed var(--color-target);
-            background-color: #F3E8FF;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            margin-top: 1rem;
-        }
+        .bg-action    { background-color: var(--color-action); }
+        .border-action{ border-color: var(--color-action); }
+        .text-action  { color: var(--color-action); }
+        .border-target{ border-color: var(--color-target); }
+        .text-target  { color: var(--color-target); }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -138,7 +91,7 @@
     <!-- SECTION 1 -->
     <section>
         <div class="text-center mb-10">
-            <h3 class="text-3xl font-bold text-slate-800 mb-4">1. Vue d'ensemble des Outils</h3>
+            <h3 class="text-3xl font-bold text-slate-800 mb-4">1. Vue d'ensemble des outils</h3>
             <p class="text-slate-600 max-w-3xl mx-auto">
                 Les trois grandes familles d'outils (Pilotage, Surveillance, M&amp;V) sont au cœur de la stratégie.
             </p>
@@ -148,15 +101,15 @@
             <!-- Pilotage -->
             <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
                 <div class="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 text-2xl mb-4 mx-auto font-bold">P</div>
-                <h4 class="text-xl font-bold text-center mb-4">Pilotage &amp; Actionneurs</h4>
+                <h4 class="text-xl font-bold text-center mb-4">Pilotage &amp; actionneurs</h4>
                 <div class="space-y-4 text-sm">
                     <div class="bg-slate-50 p-3 rounded">
                         <strong class="text-blue-800 block mb-1">Hyper</strong>
-                        GTB Sensinov, BeeBryte (Froid), Frigoristes
+                        GTB Sensinov, BeeBryte (Froid), frigoristes.
                     </div>
                     <div class="bg-slate-50 p-3 rounded">
                         <strong class="text-teal-800 block mb-1">Market</strong>
-                        GTB EFICIA (Site), Frigoristes 
+                        GTB EFICIA (site), frigoristes.
                     </div>
                 </div>
             </div>
@@ -164,19 +117,19 @@
             <!-- Surveillance -->
             <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-cyan-500">
                 <div class="flex items-center justify-center h-12 w-12 rounded-full bg-cyan-100 text-cyan-600 text-2xl mb-4 mx-auto font-bold">S</div>
-                <h4 class="text-xl font-bold text-center mb-4">Surveillance &amp; Anomalies</h4>
+                <h4 class="text-xl font-bold text-center mb-4">Surveillance &amp; anomalies</h4>
                 <div class="space-y-4 text-sm">
                     <div class="bg-slate-50 p-3 rounded">
                         <strong class="text-blue-800 block mb-1">
                             Hyper <span class="data-viz-indicator ml-1">DATA VIZ</span>
                         </strong>
-                        Anomalies Sensinov + dashboards Grafana (CVC, eau, comptage) + rapport hebdomadaire talon électrique Advizeo
+                        Anomalies Sensinov + dashboards Grafana (CVC, eau, comptage) + rapport hebdomadaire talon électrique Advizeo.
                     </div>
                     <div class="bg-slate-50 p-3 rounded">
                         <strong class="text-teal-800 block mb-1">
                             Market <span class="data-viz-indicator ml-1">DATA VIZ</span>
                         </strong>
-                        EFICIA Energy Center (tickets) + dashboards de supervision Eficia (CVC, comptage, programmes horaires, eau)
+                        EFICIA Energy Center (tickets) + dashboards de supervision Eficia (CVC, comptage, programmes horaires, eau).
                     </div>
                 </div>
             </div>
@@ -184,15 +137,15 @@
             <!-- Données / M&V -->
             <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-action">
                 <div class="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 text-action text-2xl mb-4 mx-auto font-bold">D</div>
-                <h4 class="text-xl font-bold text-center mb-4">MDE par la Donnée (M&amp;V)</h4>
+                <h4 class="text-xl font-bold text-center mb-4">MDE par la donnée (M&amp;V)</h4>
                 <div class="space-y-4 text-sm">
                     <div class="bg-slate-50 p-3 rounded">
                         <strong class="text-action block mb-1">Hyper &amp; Market</strong>
                         <p>Advizeo / SAVEe</p>
                         <ul class="list-disc list-inside text-slate-500 mt-1 text-xs">
-                            <li>IPMVP (Option C) / DJU</li>
-                            <li>TOP/FLOP</li>
-                            <li>Pilotage Plan d'Actions (SAVEe)</li>
+                            <li>IPMVP (Option C) / DJU.</li>
+                            <li>TOP/FLOP.</li>
+                            <li>Pilotage plan d'actions (SAVEe).</li>
                         </ul>
                     </div>
                 </div>
@@ -213,22 +166,25 @@
             <!-- Colonne Hyper -->
             <div class="flex flex-col space-y-8">
                 <div class="text-center bg-blue-600 text-white py-2 rounded-t-lg shadow">
-                    <h3 class="text-2xl font-bold">HYPERMARCHÉS <span class="text-sm font-normal block pt-1">(Pilotage local + soutien CMM maintenance)</span></h3>
+                    <h3 class="text-2xl font-bold">
+                        HYPERMARCHÉS
+                        <span class="text-sm font-normal block pt-1">(Pilotage local + soutien CMM maintenance)</span>
+                    </h3>
                 </div>
 
                 <!-- N0 Hyper -->
                 <div class="relative pl-4">
                     <div class="card-level card-hyper bg-white p-6 rounded shadow-md">
                         <span class="absolute -left-3 top-6 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">N0</span>
-                        <h4 class="text-lg font-bold text-blue-900 mb-2">Magasin Hyper (Exploitation)</h4>
-                        <p class="text-sm text-slate-600 mb-3"><strong>Acteurs&nbsp;:</strong> Directeur, Managers, Technique site</p>
+                        <h4 class="text-lg font-bold text-blue-900 mb-2">Magasin Hyper (exploitation)</h4>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Acteurs&nbsp;:</strong> Directeur, managers, technique site.</p>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
-                            <li>Application consignes CMM/DTR</li>
-                            <li>Forçages ponctuels (via GTB/bypass)</li>
-                            <li>Remontée problèmes (fuites, inconfort)</li>
+                            <li>Application consignes CMM/DTR.</li>
+                            <li>Forçages ponctuels (via GTB/bypass).</li>
+                            <li>Remontée problèmes (fuites, inconfort).</li>
                         </ul>
                         <div class="mt-3 text-xs bg-blue-50 text-blue-800 p-2 rounded">
-                            <strong>Flux&nbsp;:</strong> Reçoit consignes CMM/DTR ⇄ Envoie alertes terrain.
+                            <strong>Flux&nbsp;:</strong> reçoit consignes CMM/DTR ⇄ envoie alertes terrain.
                         </div>
                     </div>
                 </div>
@@ -250,7 +206,7 @@
                                 <p class="text-xs text-slate-600">Analyse continue, détection dérives, modulation algorithmique du froid.</p>
                             </div>
                             <div class="border-l-2 border-blue-200 pl-3">
-                                <strong class="text-sm text-slate-900">Frigoristes / Prestataires</strong>
+                                <strong class="text-sm text-slate-900">Frigoristes / prestataires</strong>
                                 <p class="text-xs text-slate-600">Réglages précis, exécution actions MDE/curatif.</p>
                             </div>
                         </div>
@@ -268,12 +224,14 @@
                             Outils de détection <span class="data-viz-indicator ml-1">DATA VIZ</span> :
                         </p>
                         <ul class="text-sm space-y-1 list-disc list-inside text-blue-700 bg-blue-50 p-3 rounded">
-                            <li><strong>Sensinov (module Anomalies)</strong> : détection auto (talon, conso anormale).</li>
-                            <li><strong>Dashboards Grafana</strong> : visualisation CVC / eau / comptage (état rooftops, sondes, consignes, courbes de charge).</li>
+                            <li><strong>Sensinov (module Anomalies)</strong> : détection auto (talon, consommation anormale).</li>
+                            <li><strong>Dashboards Grafana</strong> : visualisation CVC/eau/comptage (état rooftops, sondes, consignes, courbes de charge).</li>
                             <li><strong>Rapport Advizeo</strong> : surveillance talon électrique (hebdo).</li>
                         </ul>
                         <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-300">
-                            <strong>Rôle clé CMM &amp; Manager Énergie :</strong> utilisation de Grafana/Sensinov pour repérer les dérives (forçage, erreur de prog.) et <strong>prioriser les actions</strong> avant formalisation.
+                            <strong>Rôle clé CMM &amp; manager énergie&nbsp;:</strong>
+                            utiliser Grafana/Sensinov pour repérer les dérives et
+                            <strong>prioriser les actions</strong> avant formalisation dans SAVEe.
                         </div>
                     </div>
                 </div>
@@ -286,12 +244,12 @@
                         <span class="absolute -left-3 top-6 bg-action text-white text-xs font-bold px-2 py-1 rounded">N2-3</span>
                         <h4 class="text-lg font-bold text-action mb-2">Pilotage performance &amp; plan d'actions MDE</h4>
                         <div class="mb-3 text-sm">
-                            <strong class="action-driver">ADVIZEO / SAVEE :</strong> pilote de la performance MDE (IPMVP Option C), consolidation des gains, TOP/FLOP.
+                            <strong class="action-driver">ADVIZEO / SAVEe :</strong> pilotage de la performance MDE (IPMVP Option C), consolidation des gains, TOP/FLOP.
                         </div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
                             <li>Formalisation des signaux (Sensinov/Grafana/talon) en actions SAVEe.</li>
-                            <li><strong>Défi central :</strong> la MDE repose beaucoup sur le CMM (maintenance, prestataires, travaux + MDE), peu de temps pour l'analyse fine.</li>
-                            <li><strong>Dispersion :</strong> la plupart des actions sont dans Savee, mais le suivi reste éclaté (GTB, mails, Excel, comptes rendus).</li>
+                            <li>Charge forte pour le CMM (maintenance, prestataires, travaux + MDE).</li>
+                            <li>Suivi des actions encore éclaté (GTB, mails, Excel, comptes rendus).</li>
                         </ul>
                     </div>
                 </div>
@@ -300,18 +258,21 @@
             <!-- Colonne Market -->
             <div class="flex flex-col space-y-8">
                 <div class="text-center bg-teal-600 text-white py-2 rounded-t-lg shadow">
-                    <h3 class="text-2xl font-bold">MARKETS <span class="text-sm font-normal block pt-1">(Surveillance centralisée Eficia)</span></h3>
+                    <h3 class="text-2xl font-bold">
+                        MARKETS
+                        <span class="text-sm font-normal block pt-1">(Surveillance centralisée Eficia)</span>
+                    </h3>
                 </div>
 
                 <!-- N0 Market -->
                 <div class="relative pl-4">
                     <div class="card-level card-market bg-white p-6 rounded shadow-md">
                         <span class="absolute -left-3 top-6 bg-teal-600 text-white text-xs font-bold px-2 py-1 rounded">N0</span>
-                        <h4 class="text-lg font-bold text-teal-900 mb-2">Magasin Market (Exploitation)</h4>
-                        <p class="text-sm text-slate-600 mb-3"><strong>Acteurs&nbsp;:</strong> Directeur, équipes rayon</p>
+                        <h4 class="text-lg font-bold text-teal-900 mb-2">Magasin Market (exploitation)</h4>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Acteurs&nbsp;:</strong> Directeur, équipes rayon.</p>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
-                            <li>Application consignes Energy Center</li>
-                            <li>Remontée pannes/problèmes Froid/CVC</li>
+                            <li>Application consignes Energy Center.</li>
+                            <li>Remontée pannes/problèmes Froid/CVC.</li>
                         </ul>
                         <div class="mt-3 text-xs bg-teal-50 text-teal-800 p-2 rounded">
                             <strong>Flux&nbsp;:</strong> reçoit consignes Energy Center ⇄ retours tickets.
@@ -332,7 +293,7 @@
                                 <p class="text-xs text-slate-600">Actionneurs TGBT/DALI. Programmation locale (horaires, consignes).</p>
                             </div>
                             <div class="border-l-2 border-teal-200 pl-3">
-                                <strong class="text-sm text-slate-900">Frigoristes / Prestataires</strong>
+                                <strong class="text-sm text-slate-900">Frigoristes / prestataires</strong>
                                 <p class="text-xs text-slate-600">Interventions sur alerte Energy Center/Advizeo.</p>
                             </div>
                         </div>
@@ -350,11 +311,12 @@
                             <strong>Organisation dédiée :</strong> vraie équipe MDE chez Eficia.
                         </div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-teal-700 bg-teal-50 p-3 rounded">
-                            <li><strong>EFICIA Energy Center :</strong> tickets issus de forçages, pertes de com., conso nocturnes anormales, coffrets non alimentés, etc.</li>
+                            <li><strong>EFICIA Energy Center :</strong> tickets issus de forçages, pertes de communication, consommations nocturnes anormales, coffrets non alimentés, etc.</li>
                             <li><strong>Dataviz Eficia <span class="data-viz-indicator ml-1">DATA VIZ</span> :</strong> supervision CVC, comptage, programmes horaires, eau.</li>
                         </ul>
                         <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded border border-yellow-300">
-                            <strong>Rôle clé Energy Center / CMM / Manager Énergie :</strong> ces vues servent à repérer les sites en dérive et générer des tickets d'action.
+                            <strong>Rôle clé Energy Center / CMM / manager énergie&nbsp;:</strong>
+                            repérer les sites en dérive et générer des tickets d'action.
                         </div>
                     </div>
                 </div>
@@ -367,41 +329,66 @@
                         <span class="absolute -left-3 top-6 bg-action text-white text-xs font-bold px-2 py-1 rounded">N2-3</span>
                         <h4 class="text-lg font-bold text-action mb-2">Pilotage performance &amp; plan d'actions MDE</h4>
                         <div class="mb-3 text-sm">
-                            <strong class="action-driver">ADVIZEO / SAVEE :</strong> pilote de la performance MDE (IPMVP Option C), consolidation des gains, TOP/FLOP.
+                            <strong class="action-driver">ADVIZEO / SAVEe :</strong> pilotage de la performance MDE (IPMVP Option C), consolidation des gains, TOP/FLOP.
                         </div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
                             <li>Formalisation des actions issues de l'Energy Center/Dataviz en actions SAVEe.</li>
-                            <li><strong>Rôle du Manager Énergie :</strong> priorisation des sites (TOP/FLOP) et validation des actions régionales.</li>
-                            <li><strong>Dispersion :</strong> la plupart des actions sont dans Savee, mais le suivi reste éclaté (Eficia, mails, Excel).</li>
+                            <li>Priorisation des sites et validation des actions régionales par le manager énergie.</li>
+                            <li>Suivi encore morcelé entre Eficia, mails, Excel.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Ressource énergie dédiée -->
-        <div class="mt-16 max-w-4xl mx-auto">
+        <!-- PILOTAGE N3 : MANAGER NATIONAL VS RÉGIONAL -->
+        <div class="mt-16 max-w-6xl mx-auto">
             <div class="arrow-down mb-6 text-slate-700">↓ (N3)</div>
-            <div class="bg-gray-100 rounded-xl shadow-lg p-6 border-l-8 border-cyan-500">
-                <h3 class="text-xl font-bold text-cyan-700 mb-3 flex items-center">
-                    <svg class="w-6 h-6 mr-2 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v16l-12 3zm0 0L3 17"></path></svg>
-                    Ressource Énergie dédiée (Energy Manager régional / Référent)
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <div>
-                        <strong class="text-slate-800 block mb-1">Rôle principal</strong>
-                        <ul class="list-disc list-inside text-slate-700 space-y-1">
-                            <li>Exploiter les dashboards (Grafana, Eficia) et Advizeo pour analyser les UES (Froid, CVC, Éclairage, Eau...).</li>
-                            <li>Animer le plan d’actions MDE avec les CMM.</li>
-                            <li>Préparer le reporting MDE pour la revue de management.</li>
+
+            <div class="bg-slate-100 rounded-2xl shadow-xl p-6 md:p-8 border-l-8 border-cyan-500">
+                <div class="flex items-center mb-6">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-500 text-white mr-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-slate-900">
+                        Pilotage N3&nbsp;: Manager national vs manager régional MDE
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Manager national -->
+                    <div class="bg-white rounded-xl shadow-md border-t-4 border-red-500 p-5">
+                        <h4 class="text-lg font-bold text-red-600 mb-2">Manager énergie France (stratégie)</h4>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                            <li>Fixe la trajectoire globale (objectifs énergie, ISO 50001, décret tertiaire) et le cadre budgétaire.</li>
+                            <li>Définit le référentiel commun&nbsp;: UES, indicateurs, règles de calcul, consignes et standards.</li>
+                            <li>Structure les plans d’actions nationaux et consolide les résultats par région, format et UES.</li>
+                            <li>Pilote contrats énergie/M&amp;V et le déploiement des grands projets sur l’ensemble du parc.</li>
                         </ul>
                     </div>
-                    <div class="bg-white p-3 rounded border border-gray-200">
-                        <strong class="text-red-600 block mb-1">Constat (nécessité)</strong>
-                        <p class="text-xs text-red-700 italic">
-                            Un CMM qui gère déjà les sujets travaux, curatif, prestataires, incidents, etc. ne peut pas, en plus, faire une analyse fine par UES pour toute la région. L'analyse fine nécessite une ressource dédiée.
-                        </p>
+
+                    <!-- Manager régional -->
+                    <div class="bg-white rounded-xl shadow-md border-t-4 border-teal-500 p-5">
+                        <h4 class="text-lg font-bold text-teal-700 mb-2">Manager régional MDE (tactique / terrain)</h4>
+                        <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
+                            <li>Analyse les UES de sa région à partir des dashboards (Grafana/Eficia) et d’Advizeo.</li>
+                            <li>Construit et suit le plan d’actions MDE avec les CMM en s’appuyant sur les TOP/FLOP.</li>
+                            <li>Accompagne les magasins sur la mise en œuvre des consignes et des réglages MDE.</li>
+                            <li>Fait remonter freins terrain, idées d’actions et gains confirmés au niveau national.</li>
+                        </ul>
                     </div>
+                </div>
+
+                <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4">
+                    <h5 class="text-sm font-bold text-cyan-800 mb-1">Complémentarité essentielle</h5>
+                    <p class="text-xs md:text-sm text-slate-700">
+                        Le niveau national donne la direction&nbsp;: objectifs, règles du jeu, outils et priorités d’investissement.
+                        Le niveau régional assure l’exécution et l’ajustement terrain en lien avec les CMM. Sans analyse régionale,
+                        la stratégie reste théorique&nbsp;; sans cadre national, les pratiques se dispersent. Les deux niveaux
+                        s’appuient sur les mêmes données (Advizeo, GTB/Dataviz, Qlik) mais à des échelles différentes.
+                    </p>
                 </div>
             </div>
         </div>
@@ -417,9 +404,9 @@
                     L'objectif est de centraliser la gestion de toutes les actions MDE pour un suivi cohérent par Unité Élémentaire de Suivi (UES) et par site, potentiellement dans un outil comme Qlik.
                 </p>
                 <ul class="text-sm space-y-2 list-disc list-inside text-white bg-purple-600 p-4 rounded-lg shadow-inner">
-                    <li>Toutes les actions MDE sont centralisées dans <strong>UN SEUL outil (Qlik, Savee ou autre)</strong>.</li>
-                    <li><strong>Champs obligatoires :</strong> Site, Territoire, Format, <strong>UES (Froid, CVC, Éclairage, Eau, Force...)</strong>, origine (anomalie Sensinov/Grafana, ticket Eficia, audit, idée magasin...), statut, gains estimés et mesurés.</li>
-                    <li>Cet outil est alimenté <strong>automatiquement</strong> par Sensinov/Grafana, EFICIA et Advizeo.</li>
+                    <li>Toutes les actions MDE sont centralisées dans un seul outil (Qlik, SAVEe ou autre).</li>
+                    <li>Champs obligatoires&nbsp;: site, territoire, format, UES (froid, CVC, éclairage, eau, force...), origine, statut, gains estimés et mesurés.</li>
+                    <li>Alimentation automatique par Sensinov/Grafana, EFICIA et Advizeo.</li>
                 </ul>
             </div>
 
@@ -427,11 +414,11 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Scénario 1 -->
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-action">
-                    <h5 class="text-xl font-bold text-action mb-3">Scénario 1 : Advizeo / Savee central</h5>
+                    <h5 class="text-xl font-bold text-action mb-3">Scénario 1 : Advizeo / SAVEe central</h5>
                     <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li>Advizeo/Savee reste l’outil central de suivi des actions MDE et des gains IPMVP.</li>
-                        <li>Sensinov/Grafana et EFICIA poussent leurs dérives et tickets sous forme d’actions standardisées dans Savee via des API.</li>
-                        <li>Faible impact sur les outils GTB, consolidation maximale.</li>
+                        <li>Advizeo/SAVEe reste l’outil central de suivi des actions MDE et des gains IPMVP.</li>
+                        <li>Sensinov/Grafana et EFICIA poussent leurs dérives et tickets sous forme d’actions standardisées.</li>
+                        <li>Faible impact sur les GTB, consolidation maximale.</li>
                     </ul>
                 </div>
 
@@ -439,26 +426,28 @@
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-600">
                     <h5 class="text-xl font-bold text-blue-600 mb-3">Scénario 2 : GTB / Dataviz au centre</h5>
                     <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li>Les GTBistes (Sensinov, Eficia) développent un module "plan d’actions" complet dans leurs écosystèmes.</li>
-                        <li>Advizeo se concentre sur le calcul et la consolidation des gains IPMVP à partir des actions issues des GTB (API).</li>
-                        <li>Risque de double saisie ou de complexité d'intégration entre les deux GTB/Dataviz.</li>
+                        <li>Les GTBistes développent un module “plan d’actions” complet dans leurs écosystèmes.</li>
+                        <li>Advizeo se concentre sur le calcul et la consolidation des gains IPMVP.</li>
+                        <li>Risque de double saisie et d’intégration complexe entre les écosystèmes.</li>
                     </ul>
                 </div>
 
                 <!-- Scénario 3 -->
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-target">
-                    <h5 class="text-xl font-bold text-target mb-3">Scénario 3 : outil Carrefour dédié (Energy Board / Qlik)</h5>
+                    <h5 class="text-xl font-bold text-target mb-3">Scénario 3 : outil Carrefour dédié</h5>
                     <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li>Outil interne unique (comme Qlik) qui agrège toutes les actions MDE, indépendant des prestataires.</li>
-                        <li>Intégrations (API) avec Sensinov/Grafana, EFICIA et Advizeo pour remonter anomalies, tickets et gains.</li>
-                        <li>Coût de développement initial élevé, mais contrôle total sur la donnée et la structure (UES).</li>
+                        <li>Outil interne unique (type Energy Board / Qlik) qui agrège toutes les actions MDE.</li>
+                        <li>Intégrations API avec Sensinov/Grafana, EFICIA et Advizeo.</li>
+                        <li>Coût de développement plus élevé, mais contrôle total sur la donnée et la structure UES.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="text-center mt-12">
-            <h4 class="text-xl font-bold text-slate-800">Conclusion : la valeur est dans l'analyse par UES et la centralisation de l'action.</h4>
+            <h4 class="text-xl font-bold text-slate-800">
+                Conclusion : la valeur est dans l'analyse par UES et la centralisation de l'action.
+            </h4>
         </div>
     </section>
 
@@ -469,9 +458,8 @@
 </footer>
 
 <script>
-    // Placeholder si tu veux ajouter des graphiques plus tard
     window.onload = function () {
-        // Chart.js ici si besoin
+        // Chart.js éventuel plus tard
     };
 </script>
 </body>
