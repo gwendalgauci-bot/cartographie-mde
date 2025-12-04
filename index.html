@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartographie MDE : Flux et Outils</title>
     <!-- Remplacer par votre icône -->
-    <link rel="icon" type="image/png" href="https://placehold.co/16x16/0000FF/FFFFFF?text=DTF">
+    <link rel="icon" type="image/png" href="Logo DTF.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
                         <span class="text-emerald-800 block mb-1 font-semibold">Market <span class="data-viz-indicator">DATA VIZ</span></span>
-                        EFICIA Energy Center (tickets automatiques), dashboards Eficia (CVC, comptage, programmes horaires).
+                        EFICIA Energy Center ( via tickets), dashboards Eficia (CVC, comptage, programmes horaires).
                     </div>
                 </div>
             </div>
@@ -175,12 +175,12 @@
                         <h4 class="text-lg font-bold text-[var(--color-hyper)] mb-2">Exploitation (magasin Hyper)</h4>
                         <p class="text-sm text-slate-600 mb-3"><strong>Acteurs :</strong> Directeur, managers, technique site (CMM).</p>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
-                            <li>Application des consignes CMM/DTR.</li>
+                            <li>Application des consignes CMM/DTR/DTF.</li>
                             <li>Forçages ponctuels (via GTB ou bypass) si besoin.</li>
                             <li>Remontée des problèmes terrain (inconfort, fuites, pannes).</li>
                         </ul>
                         <div class="mt-3 text-xs bg-blue-50 text-blue-800 p-2 rounded-lg border border-blue-200">
-                            <strong>Flux :</strong> Consignes MDE (CMM/DTR) ⇄ alertes et remontées terrain.
+                            <strong>Flux :</strong> Consignes MDE (CMM/DTR/DTF) ⇄ alertes et remontées terrain.
                         </div>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
                             <span class="text-action font-bold">Advizeo / SAVEE :</span> consolidation des gains IPMVP, suivi des TOP/FLOP, pilotage du plan d'actions MDE Hyper.
                         </div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
-                            <li>Formalisation des signaux (Sensinov, Grafana, rapports hebdomadaires) en actions traçables dans SAVEE.</li>
+                            <li>Formalisation des signaux (via les visites sur site des EM Advizeo) en actions traçables dans SAVEE.</li>
                             <li>Priorisation des sites et arbitrages avec le manager énergie et les territoires.</li>
                             <li>Limite actuelle : suivi MDE fragmenté entre SAVEE, GTB, compte-rendus et fichiers locaux.</li>
                         </ul>
@@ -267,9 +267,9 @@
                     </div>
                     <div class="card-level card-market bg-white p-6 rounded-xl shadow-lg">
                         <h4 class="text-lg font-bold text-[var(--color-market)] mb-2">Exploitation (magasin Market)</h4>
-                        <p class="text-sm text-slate-600 mb-3"><strong>Acteurs :</strong> Directeur, équipes rayon (peu d'autonomie technique).</p>
+                        <p class="text-sm text-slate-600 mb-3"><strong>Acteurs :</strong> Directeur (peu d'autonomie technique).</p>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
-                            <li>Application des consignes envoyées par l’Energy Center (via GTB ou fiches réflexe).</li>
+                            <li>Application des consignes envoyées par l’Energy Center (via GTB).</li>
                             <li>Remontée des pannes Froid/CVC vers les prestataires et Eficia.</li>
                         </ul>
                         <div class="mt-3 text-xs bg-emerald-50 text-emerald-800 p-2 rounded-lg border border-emerald-200">
@@ -315,7 +315,7 @@
                             <li><strong>Dataviz Eficia <span class="data-viz-indicator">DATA VIZ</span> :</strong> supervision centralisée (CVC, comptage, programmes horaires, eau, parfois froid).</li>
                         </ul>
                         <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded-lg border border-yellow-300 font-medium">
-                            <strong>Rôle clé Energy Center :</strong> repérer les dérives tôt, ouvrir les tickets d’action (N1) et remonter les cas récurrents ou structurels vers Advizeo et les territoires.
+                            <strong>Rôle clé Energy Center :</strong> repérer les dérives tôt, ouvrir les tickets d’action (N1) et remonter les cas récurrents ou structurels vers les territoires.
                         </div>
                     </div>
                 </div>
@@ -369,7 +369,7 @@
                             <li>Fixe les objectifs (Décret Tertiaire, ISO 50001) et le cadre budgétaire.</li>
                             <li>Définit le référentiel commun (UES, indicateurs, consignes, règles de déclenchement).</li>
                             <li>Structure les plans d’actions nationaux et consolide les résultats.</li>
-                            <li>Pilote les contrats énergie et M&V (Advizeo, GTB, Eficia, BeeBryte).</li>
+                            <li>Pilote la M&V et les prestation MDE externes (Advizeo, GTB, Eficia, BeeBryte).</li>
                         </ul>
                     </div>
 
@@ -377,14 +377,16 @@
                     <div class="bg-slate-50 rounded-xl shadow-inner border-l-4 border-[var(--color-market)] p-5">
                         <div class="flex items-center mb-2">
                             <span class="level-tag tag-market mr-2">TACTIQUE</span>
-                            <h4 class="text-lg font-bold text-[var(--color-market)]">Référent énergie territoire / manager régional MDE</h4>
+                            <h4 class="text-lg font-bold text-[var(--color-market)]">Référent énergie territoire</h4>
                         </div>
                         <ul class="list-disc list-inside text-sm text-slate-700 space-y-1">
                             <li>Analyse les UES de sa région (Grafana, Eficia, Advizeo) et priorise les sites.</li>
-                            <li>Construit et suit le plan d’actions MDE avec les CMM à partir des TOP/FLOP et des dérives détectées.</li>
+                            <li>Construit et suit le plan d’actions avec le MDE à partir des TOP/FLOP et des dérives détectées.</li>
                             <li>Anime un suivi régulier avec les CMM (points courts hebdomadaires) pour s’assurer que les actions avancent.</li>
-                            <li>Rôle cible : ressource MDE dédiée, distincte du CMM qui est déjà chargé des travaux et de la maintenance curative.</li>
+                            <li>Rôle cible : référent énergie dédiée, distincte du CMM qui est déjà chargé des travaux et de la maintenance curative.</li>
                             <li>Fait remonter les freins terrain et les gains locaux au national pour ajuster la stratégie.</li>
+                            <li>Compile et suit l'ensembles des actions MDE sur le territoire.</li>
+                            <li>Aide et accompagne le référent énergie sur l'ensemble de ses tâches.</li>
                         </ul>
                     </div>
                 </div>
@@ -392,7 +394,7 @@
                 <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 mt-6">
                     <h5 class="text-sm font-bold text-cyan-800 mb-1">Synergie national / régional</h5>
                     <p class="text-xs md:text-sm text-slate-700">
-                        Le national donne la direction et le cadre ; le régional exploite les données (Grafana, Eficia, Advizeo), pilote le plan d’actions MDE par UES avec les CMM, et alimente la boucle d’amélioration continue ISO 50001.
+                        Le national donne la direction et le cadre ; le régional exploite les données (Grafana, Eficia, Advizeo) avec le MDE, pilote le plan d’actions par UES avec le CMM avec l'aide du MDE , et alimente la boucle d’amélioration continue ISO 50001.
                     </p>
                 </div>
             </div>
@@ -405,7 +407,7 @@
                     Boucle hebdomadaire de réactivité sur les dérives (proposition d'amélioration)
                 </h3>
                 <p class="text-sm md:text-base text-slate-100 mb-6">
-                    Retour terrain d’un CMM : réactivité insuffisante sur les magasins en dérive, informations éclatées et trop de réunions (GTBistes, Advizeo, manager énergie, Lionel…). L’objectif de cette boucle est de déclencher plus vite les actions MDE, avec des règles simples et un seul niveau d’information pour tous.
+                    Retour terrain d’un CMM : réactivité insuffisante sur les magasins en dérive, informations éclatées et trop de réunions (GTBistes, Advizeo, manager énergie, expert CVC…). L’objectif de cette boucle est de déclencher plus vite les actions MDE, avec des règles simples et un seul niveau d’information pour tous.
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -570,3 +572,4 @@
 </script>
 </body>
 </html>
+
