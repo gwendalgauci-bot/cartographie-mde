@@ -78,7 +78,46 @@
     </style>
 </head>
 <body class="bg-slate-50">
+    <!-- MENU GLOBAL ENTRE LES PAGES MDE -->
+    <div class="fixed left-2 top-1/2 -translate-y-1/2 z-50">
+        <div class="relative">
+            <button id="site-nav-toggle"
+                    class="group flex items-center bg-slate-900/90 text-slate-100 text-xs px-2 py-2 rounded-full shadow-lg border border-slate-700 hover:bg-slate-800">
+                <span class="hidden sm:inline ml-1 mr-1">Navigation</span>
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-slate-900 font-bold text-xs">
+                    ≡
+                </span>
+            </button>
 
+            <div id="site-nav-panel"
+                 class="hidden mt-2 bg-slate-900/95 text-slate-100 text-xs rounded-xl shadow-xl border border-slate-700 px-2 py-2 w-52">
+                <button id="site-nav-close"
+                        class="w-full text-right text-[10px] text-slate-400 mb-1 hover:text-slate-200">
+                    ✕
+                </button>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="index.html" data-page="index.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Cartographie MDE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="feuille-de-route-mde.html" data-page="feuille-de-route-mde.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Feuille de route MDE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="strategieMDE.html" data-page="strategieMDE.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Stratégie MDE (slides)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 <header class="bg-gradient-to-r from-blue-700 to-emerald-600 text-white py-12 px-4 shadow-lg">
     <div class="max-w-7xl mx-auto text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Cartographie MDE</h1>
@@ -586,6 +625,7 @@
 </script>
 </body>
 </html>
+
 
 
 
