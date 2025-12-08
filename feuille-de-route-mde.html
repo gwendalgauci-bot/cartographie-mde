@@ -459,7 +459,56 @@
         navPanel.classList.toggle('hidden');
     });
 </script>
+<script>
+    (function () {
+        const toggle = document.getElementById('site-nav-toggle');
+        const panel = document.getElementById('site-nav-panel');
+        const closeBtn = document.getElementById('site-nav-close');
 
+        if (!toggle || !panel) return;
+
+        // ouverture / fermeture
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            panel.classList.toggle('hidden');
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                panel.classList.add('hidden');
+            });
+        }
+
+        // fermer si on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (panel.classList.contains('hidden')) return;
+            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+                panel.classList.add('hidden');
+            }
+        });
+
+        // surligner la page active dans le menu
+        const links = panel.querySelectorAll('.site-nav-link');
+        const path = window.location.pathname;
+
+        links.forEach((link) => {
+            const page = link.dataset.page;
+            if (!page) return;
+
+            const isIndex =
+                page === 'index.html' &&
+                (path.endsWith('/') || path.endsWith('/index.html') || path === '');
+
+            const isMatch = path.endsWith(page) || isIndex;
+
+            if (isMatch) {
+                link.classList.add('bg-slate-800', 'text-emerald-300', 'font-semibold');
+            }
+        });
+    })();
+</script>
 </body>
 </html>
+
 
