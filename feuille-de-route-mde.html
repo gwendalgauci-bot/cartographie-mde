@@ -2,414 +2,506 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <title>Stratégie MDE – Présentation dirigeants Carrefour France</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feuille de Route MDE – Energy Manager France Carrefour (2026–2028)</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="Logo DTF.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
-            min-height: 100vh;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #020617; /* slate-950 */
+            color: #e2e8f0;
         }
 
-        .infographic-container {
+        /* Slides */
+        .slide {
+            display: none;
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border-radius: 1rem;
-        }
-
-        /* Couleurs des axes */
-        .color-Axe1 { --color: #0b3d91; --background-color: rgba(11, 61, 145, 0.08); color: #0b3d91; border-color: #0b3d91; }
-        .color-Axe2 { --color: #16a085; --background-color: rgba(22, 160, 133, 0.08); color: #16a085; border-color: #16a085; }
-        .color-Axe3 { --color: #3498db; --background-color: rgba(52, 152, 219, 0.08); color: #3498db; border-color: #3498db; }
-        .color-Axe4 { --color: #7f8c8d; --background-color: rgba(127, 140, 141, 0.08); color: #7f8c8d; border-color: #7f8c8d; }
-        .color-Axe5 { --color: #5dade2; --background-color: rgba(93, 173, 226, 0.08); color: #5dade2; border-color: #5dade2; }
-
-        .axis-box {
-            border-left: 4px solid var(--color);
-            background-color: var(--background-color);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            transition: transform 0.2s, box-shadow 0.2s;
             height: 100%;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
+        .slide-active {
+            display: flex;
+            opacity: 1;
         }
 
-        .axis-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        /* Cartes d’info */
+        .info-card {
+            padding: 1.25rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(51,65,85,0.7);
+            background-color: rgba(15,23,42,0.7);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .info-card:hover {
+            background-color: rgba(30,41,59,0.9);
+            transform: translateY(-1px);
         }
 
-        .axis-title {
-            color: var(--color);
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            font-size: 0.78rem;
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
         }
 
-        .iso-tag {
-            background-color: #e74c3c;
-            color: #ffffff;
-            padding: 0.1rem 0.5rem;
-            border-radius: 0.375rem;
-            font-size: 0.65rem;
-            font-weight: 600;
-            white-space: nowrap;
+        /* Mode plein écran : on ne garde que la slide */
+        #deck:fullscreen header,
+        #deck:fullscreen footer {
+            display: none;
         }
-
-        .timeline-line {
-            height: 2px;
-            background-color: #d1d5db;
-            margin-bottom: 1rem;
+        #deck:fullscreen main {
+            padding: 0;
         }
-
-        .timeline-header {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #0b3d91;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 1024px) {
-            .infographic-container {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .layout-main {
-                flex-direction: column;
-            }
+        #deck:fullscreen .slide-frame {
+            width: 100%;
+            max-width: none;
+            height: 100vh;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            padding: 2rem;
         }
     </style>
 </head>
 <body>
 
-<div class="infographic-container">
-    <!-- TÊTE D’AFFICHE -->
-    <header class="mb-8 p-4 rounded-xl bg-blue-50/70 border-b-4 border-blue-900">
-        <h1 class="text-3xl font-extrabold text-[#0b3d91] mb-1">
-            Feuille de route MDE – Energy Manager France Carrefour
-        </h1>
-        <h2 class="text-xl font-semibold text-gray-700 mb-3">
-            2026–2028 – ISO 50001, Décret tertiaire, performance énergétique
-        </h2>
+<div id="deck" class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
 
-        <!-- Bloc Contexte -->
-        <div class="bg-white p-3 rounded-lg shadow-inner text-sm text-gray-600">
-            <ul class="list-disc list-inside space-y-1">
-                <li>Carrefour France doit tenir la cible <strong>-40&nbsp;%</strong> de consommation finale en 2030 vs 2019 (Décret tertiaire).</li>
-                <li>Renouvellement ISO 50001 : renforcer la performance énergétique, la MDE et le pilotage par UES (Usages Énergétiques Significatifs).</li>
-                <li>Nécessité de structurer les outils et la gouvernance avec les prestataires (Eficia, Advizeo, Sensinov, BeeBryte, etc.), les régions, sièges et entrepôts.</li>
-            </ul>
+    <!-- HEADER -->
+    <header class="flex items-center justify-between px-8 py-4 border-b border-emerald-500/30 bg-slate-900/90 backdrop-blur-md">
+        <div>
+            <h1 class="text-xl font-extrabold tracking-tight text-emerald-400">
+                Stratégie MDE Carrefour France
+            </h1>
+            <p class="text-sm text-slate-400">
+                Direction Technique France & Directions Fonction Support
+            </p>
+        </div>
+        <div class="flex items-center gap-3 text-sm">
+            <span id="slide-counter"
+                  class="px-3 py-1.5 rounded-full bg-slate-800 text-slate-200 font-medium">
+                Slide 1 / 10
+            </span>
+            <button id="fullscreen-btn"
+                    class="px-4 py-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition duration-150">
+                Plein écran
+            </button>
         </div>
     </header>
 
-    <div class="layout-main flex flex-col md:flex-row">
-        <!-- LÉGENDE DES 5 AXES -->
-        <aside class="md:w-1/5 md:pr-4 md:border-r border-gray-200 mb-6 md:mb-0">
-            <h3 class="text-base font-bold text-gray-800 mb-4 uppercase tracking-wider">
-                Légende des 5 axes
-            </h3>
-            <div class="space-y-3">
-                <div class="color-Axe1 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
-                    <i data-lucide="target" class="w-5 h-5 mr-2"></i>
-                    <span class="font-semibold text-sm">Axe 1 – Politique &amp; objectifs</span>
-                </div>
-                <div class="color-Axe2 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
-                    <i data-lucide="pie-chart" class="w-5 h-5 mr-2"></i>
-                    <span class="font-semibold text-sm">Axe 2 – Pilotage par UES &amp; revue</span>
-                </div>
-                <div class="color-Axe3 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
-                    <i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i>
-                    <span class="font-semibold text-sm">Axe 3 – Outils &amp; data MDE</span>
-                </div>
-                <div class="color-Axe4 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
-                    <i data-lucide="users" class="w-5 h-5 mr-2"></i>
-                    <span class="font-semibold text-sm">Axe 4 – Coordination prestataires</span>
-                </div>
-                <div class="color-Axe5 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
-                    <i data-lucide="map" class="w-5 h-5 mr-2"></i>
-                    <span class="font-semibold text-sm">Axe 5 – Animation réseau &amp; périmètres</span>
-                </div>
-            </div>
-        </aside>
+    <!-- CONTENEUR SLIDES -->
+    <main class="flex-1 flex items-center justify-center p-6 md:p-10">
+        <div class="slide-frame w-full max-w-6xl h-[75vh] bg-slate-800/60 border border-slate-700 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex items-center justify-center p-10">
 
-        <!-- FRISE CHRONOLOGIQUE -->
-        <main class="md:w-4/5 md:pl-6">
-            <div class="grid grid-cols-3 gap-6">
-                <div class="timeline-header">2026</div>
-                <div class="timeline-header">2027</div>
-                <div class="timeline-header">2028</div>
-            </div>
-
-            <div class="timeline-line"></div>
-
-            <div class="grid grid-cols-3 gap-6">
-                <!-- AXE 1 -->
-                <div class="col-span-3">
-                    <h4 class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-                        AXE 1 – POLITIQUE, OBJECTIFS, TRAJECTOIRE 2030
-                    </h4>
-                </div>
-
-                <div class="color-Axe1 axis-box">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Révision de la politique énergie (S1–S3)</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Intégrer la notion de <strong>performance énergétique</strong> (par typologie, par UES).</li>
-                        <li>Reformuler l’objectif national : -40&nbsp;% en 2030 avec trajectoire annuelle.</li>
-                        <li>Faire valider la nouvelle politique dans les instances Carrefour.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe1 axis-box">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Feuille de route 2025–2030 par typologie</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Construire la trajectoire annuelle (-40&nbsp;%) par typologie (hypers, markets, ex-Cora/Casino, sièges, entrepôts).</li>
-                        <li>Définir des EnPI cibles (kWhEP/m² corrigé) par typologie.</li>
-                        <li>Associer des volumes d’actions MDE attendus par grandes UES.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe1 axis-box">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Objectifs par site via les plans MDE</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Identifier chaque année les sites prioritaires (TOP/FLOP, dérives, travaux).</li>
-                        <li>Fixer des <strong>objectifs de performance</strong> différenciés par site.</li>
-                        <li>Injecter ces objectifs dans le référentiel d’actions MDE (SAVEE / outil cible).</li>
-                    </ul>
-                </div>
-
-                <!-- AXE 2 -->
-                <div class="col-span-3 mt-4">
-                    <h4 class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-                        AXE 2 – PILOTAGE PAR UES &amp; REVUE ÉNERGÉTIQUE
-                    </h4>
-                </div>
-
-                <div class="color-Axe2 axis-box">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Référentiel national UES &amp; EnPI</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Définir les UES : froid, CVC, éclairage, eau, process spécifiques.</li>
-                        <li>Associer pour chaque usage 1 à 2 indicateurs de performance (EnPI).</li>
-                        <li>Valider le référentiel avec DT, Advizeo, Eficia, Sensinov.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe2 axis-box col-span-1">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Comptage &amp; affectation par UES (pilote)</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Cartographier compteurs et sous-compteurs sur les hypers instrumentés.</li>
-                        <li>Documenter « divers », trous, incohérences.</li>
-                        <li>Écrire les règles d’affectation des compteurs aux UES.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe2 axis-box col-span-1">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Procédure de surveillance par UES</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Rédiger la procédure SME : collecte, fréquence d’analyse, interprétation des écarts.</li>
-                        <li>Expliquer le lien IPMVP site ↔ analyses par UES.</li>
-                        <li>Prévoir une revue périodique de validité (cas Gardanne, etc.).</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe2 axis-box col-span-1">
-                    <div class="axis-title flex justify-between items-center">
-                        <span>Gains, UES &amp; actions reliés</span>
-                        <span class="iso-tag">NC ISO</span>
-                    </div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Adapter le plan d’actions pour rattacher chaque action à une UES et un gain estimé.</li>
-                        <li>Produire des cas « avant/après » détaillés (Gardanne, autres sites).</li>
-                        <li>Utiliser ces cas pour démontrer l’efficacité des actions.</li>
-                    </ul>
-                </div>
-
-                <!-- AXE 3 -->
-                <div class="col-span-3 mt-4">
-                    <h4 class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-                        AXE 3 – OUTILS &amp; DATA MDE (SAVEE, EFICIA, SENSINOV, QLIK, OPERAT)
-                    </h4>
-                </div>
-
-                <div class="color-Axe3 axis-box">
-                    <div class="axis-title">SAVEE = référentiel central des actions MDE</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Sécuriser le rôle de SAVEE comme base unique des actions MDE.</li>
-                        <li>Aligner SAVEE avec les calculs IPMVP (gains globaux par site).</li>
-                        <li>Préparer les exports vers Qlik pour TOP/FLOP consolidés.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe3 axis-box">
-                    <div class="axis-title">Interfaces outils MDE</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Cadrer les flux dérives/tickets/actions entre Eficia, Sensinov, BeeBryte et SAVEE.</li>
-                        <li>Intégrer les signaux clés dans Qlik (vue nationale, typologie, sites).</li>
-                        <li>Assurer la cohérence avec OPERAT et les suivis Décret tertiaire.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe3 axis-box">
-                    <div class="axis-title">Cadrage Energy Board Carrefour</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Spécifier l’outil interne cible : référentiel unique des actions, indicateurs ISO / Décret tertiaire / UES.</li>
-                        <li>Définir la place de Qlik, Monday, OPERAT et des outils prestataires.</li>
-                        <li>Poser une roadmap outillage (court, moyen, long terme).</li>
-                    </ul>
-                </div>
-
-                <!-- AXE 4 -->
-                <div class="col-span-3 mt-4">
-                    <h4 class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-                        AXE 4 – COORDINATION PRESTATAIRES
-                    </h4>
-                </div>
-
-                <div class="color-Axe4 axis-box">
-                    <div class="axis-title">Comités MDE inter-prestataires (dès 2026)</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Organiser une réunion MDE trimestrielle commune : Eficia, Advizeo, Sensinov, BeeBryte, DT.</li>
-                        <li>Ordre du jour standard : dérives, qualité des données, rapports, interfaces.</li>
-                        <li>Partager la feuille de route et les exigences ISO 50001.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe4 axis-box">
-                    <div class="axis-title">Livrables alignés SME ISO &amp; Décret</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Avec Advizeo : adapter TOP/FLOP, IPMVP, SAVEE (UES, objectifs sites, gains par action).</li>
-                        <li>Avec Eficia/Sensinov : dashboards dérives/tickets utilisables en revue énergétique site.</li>
-                        <li>Clarifier ce qui fait foi pour le pilotage national.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe4 axis-box">
-                    <div class="axis-title">Rôles MDE internalisée vs externalisée</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Définir ce qui relève du pilotage interne Carrefour et ce qui reste « MDE prestataire ».</li>
-                        <li>Clarifier les attentes sur la réactivité et la priorisation des dérives.</li>
-                        <li>Intégrer ces éléments dans les contrats et plans d’actions.</li>
-                    </ul>
-                </div>
-
-                <!-- AXE 5 -->
-                <div class="col-span-3 mt-4">
-                    <h4 class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-                        AXE 5 – ANIMATION RÉSEAU &amp; PÉRIMÈTRES
-                    </h4>
-                </div>
-
-                <div class="color-Axe5 axis-box">
-                    <div class="axis-title">Kit MDE région &amp; kit de suivi site</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Construire un kit MDE pour les régions : modèle de plan MDE, trame de revue énergétique.</li>
-                        <li>Définir un kit standard de suivi site (objectifs, indicateurs, liste d’actions).</li>
-                        <li>Diffuser le kit aux managers / référents énergie régionaux.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe5 axis-box">
-                    <div class="axis-title">Régions pilotes</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Sélectionner 1 à 2 régions pilotes (ex. Sud-Est + 1 autre).</li>
-                        <li>Tester revue énergétique standard par site, nouveaux rituels MDE, déclinaison d’objectifs.</li>
-                        <li>Capitaliser les retours pour ajuster méthode et outils.</li>
-                    </ul>
-                </div>
-
-                <div class="color-Axe5 axis-box">
-                    <div class="axis-title">Extension ex-Cora/Casino, LG, sièges, entrepôts</div>
-                    <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Clarifier périmètres et responsabilités (contrats, comptage, MDE possible).</li>
-                        <li>Définir un niveau minimal de revue énergétique et de plan d’actions.</li>
-                        <li>Intégrer progressivement ces périmètres dans les objectifs et la trajectoire 2030.</li>
-                    </ul>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- PIED DE PAGE -->
-    <footer class="mt-10 pt-4 border-t-2 border-gray-300">
-        <div class="p-4 rounded-xl bg-gray-50 shadow-lg">
-            <h3 class="text-xl font-bold text-[#e74c3c] mb-4 text-center">
-                En résumé : ce que la feuille de route apporte
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                <!-- ISO 50001 -->
-                <div class="p-4 rounded-lg bg-white border border-[#0b3d91]/30">
-                    <p class="font-bold text-[#0b3d91] mb-2 flex items-center">
-                        <i data-lucide="award" class="w-4 h-4 mr-1"></i> Pour ISO 50001
+            <!-- SLIDE 1 – Titre -->
+            <section class="slide slide-active flex-col justify-center items-start">
+                <p class="text-xl font-semibold text-emerald-400 mb-4 uppercase tracking-widest">
+                    Performance énergétique & conformité
+                </p>
+                <h2 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-8 drop-shadow-lg">
+                    Stratégie MDE :<br>
+                    structurer le pilotage du gain
+                </h2>
+                <div class="bg-slate-700/60 p-6 rounded-xl border-l-4 border-emerald-500 shadow-inner max-w-2xl">
+                    <p class="text-lg text-slate-200 mb-3">
+                        <span class="font-bold text-emerald-300">Objectifs de cette revue :</span>
                     </p>
-                    <ul class="list-disc list-inside space-y-1 text-gray-700">
-                        <li>Politique énergie révisée avec notion de <strong>performance énergétique</strong> et UES.</li>
-                        <li>Revue énergétique sites + méthode de mesure par UES (NC majeures levées).</li>
-                        <li>Objectifs et actions tracés, gains mesurés et <strong>démontrés</strong>.</li>
+                    <ul class="list-disc list-inside text-base text-slate-200 space-y-2 ml-4">
+                        <li>Donner une vision claire de la situation actuelle (fragmentation, limites).</li>
+                        <li>Poser la cible : référentiel unique d’actions MDE & pilotage par UES.</li>
+                        <li>Comparer trois scénarios d’architecture et proposer une trajectoire réaliste.</li>
                     </ul>
+                </div>
+                <p class="mt-8 text-sm text-slate-500">
+                    Présentation de travail – Focus : chaîne « dérive → action → performance » et organisation.
+                </p>
+            </section>
+
+            <!-- SLIDE 2 – Fragmentation -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-sky-400 mb-2 uppercase">Partie 1 · État de l'art MDE</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Un système outillé, mais fortement fragmenté
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 w-full">
+                    <div class="info-card">
+                        <div class="flex items-center mb-3">
+                            <svg class="icon text-sky-400" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7v6c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7h16"/>
+                            </svg>
+                            <p class="font-bold text-xl text-sky-300">Multiplicité des référentiels</p>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Hypers : Sensinov (GTB/Anomalies), Grafana, BeeBryte, rapports Advizeo.</li>
+                            <li>Markets : Eficia (GTB + Energy Center), tickets et dataviz centralisés.</li>
+                            <li>Transverse : SAVEE, Qlik, fichiers locaux, comptes rendus divers.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="flex items-center mb-3">
+                            <svg class="icon text-amber-400" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                            <p class="font-bold text-xl text-amber-300">Conséquences opérationnelles</p>
+                        </div>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Chaîne « dérive → action → vérification du gain » morcelée, peu lisible.</li>
+                            <li>Plans d’actions éclatés : SAVEE, GTB, tickets, Excel, comptes rendus.</li>
+                            <li>Vision nationale reconstruite manuellement en comités multiples.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3 – Contraintes ISO / Décret -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-sky-400 mb-2 uppercase">Partie 1 · Piliers réglementaires</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Un système non aligné avec les exigences de pilotage
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 w-full">
+                    <div class="info-card border-l-4 border-indigo-500">
+                        <p class="font-bold text-xl mb-3 text-indigo-300">
+                            ISO 50001 – Système de management de l’énergie
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Politique centrée sur la réduction de consommation, pas sur la
+                                <span class="font-semibold text-white">performance énergétique</span>.
+                            </li>
+                            <li>Peu de pilotage structuré par
+                                <span class="font-semibold text-white">Usages Énergétiques Significatifs (UES)</span>.
+                            </li>
+                            <li>Vérification de l’efficacité des actions MDE non systématique.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card border-l-4 border-red-500">
+                        <p class="font-bold text-xl mb-3 text-red-300">
+                            Décret tertiaire – Trajectoire -40 % en 2030
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Besoin de traçabilité fine par bâtiment (travaux, dérives, changements).</li>
+                            <li>Peu de lien opérationnel entre outils MDE et plateforme <span class="font-semibold text-white">OPERAT</span>.</li>
+                            <li>Risque de trajectoire 2030 mal maîtrisée sans consolidation robuste.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4 – Freins terrain -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-sky-400 mb-2 uppercase">Partie 1 · Enjeux terrain</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Freins à l’efficacité et au déploiement
+                </h2>
+
+                <ul class="list-disc list-inside text-lg space-y-4 text-slate-200 ml-6 w-4/5 mx-auto">
+                    <li><span class="font-semibold text-red-400">Réactivité hétérogène :</span> absence de règle simple du type « X semaines de FLOP = plan d’action obligatoire ».</li>
+                    <li><span class="font-semibold text-red-400">Charge administrative :</span> CMM et territoires doivent recoller l’information entre GTB, SAVEE, rapports, fichiers.</li>
+                    <li><span class="font-semibold text-red-400">Opacité du gain :</span> difficile d’expliquer précisément les gains (ex. Gardanne) par UES et de les relier au Décret tertiaire.</li>
+                    <li><span class="font-semibold text-red-400">Risque de non-conformité :</span> certification ISO 50001 fragilisée et crédibilité de la trajectoire globale diminuée.</li>
+                </ul>
+            </section>
+
+            <!-- SLIDE 5 – Vision cible -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-emerald-400 mb-2 uppercase">Partie 2 · Cible et principes</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Vision cible : un système piloté et démontrable
+                </h2>
+
+                <div class="flex items-center mb-4">
+                    <svg class="icon w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <h3 class="text-2xl font-semibold text-emerald-300 ml-2">
+                        Trois piliers structurants
+                    </h3>
                 </div>
 
-                <!-- Décret tertiaire -->
-                <div class="p-4 rounded-lg bg-white border border-[#16a085]/30">
-                    <p class="font-bold text-[#16a085] mb-2 flex items-center">
-                        <i data-lucide="building" class="w-4 h-4 mr-1"></i> Pour le Décret tertiaire
-                    </p>
-                    <ul class="list-disc list-inside space-y-1 text-gray-700">
-                        <li><strong>Trajectoire 2025–2030</strong> alignée avec -40&nbsp;% vs 2019.</li>
-                        <li>Outils permettant de piloter par typologie et par site.</li>
-                        <li>Justification des écarts, intégration des travaux et changements de périmètre.</li>
-                    </ul>
-                </div>
+                <ul class="list-disc list-inside text-lg space-y-4 text-slate-200 ml-6">
+                    <li><span class="font-bold text-white">Référentiel unique d’actions MDE (RUA) :</span>
+                        un seul endroit pour suivre les actions MDE sur tout le parc (hypers, markets, entrepôts, ex-Cora/Casino).
+                    </li>
+                    <li><span class="font-bold text-white">Chaîne de valeur lisible :</span>
+                        simplifier le cycle « dérive détectée → action tracée → gain mesuré et validé ».
+                    </li>
+                    <li><span class="font-bold text-white">Déclinaison d’objectifs de performance :</span>
+                        pilotage non seulement par site, mais aussi par :
+                        <ul class="list-disc list-inside ml-8 mt-2 text-base text-slate-400 space-y-1">
+                            <li><span class="font-medium text-white">typologie</span> (hypers, markets, entrepôts) ;</li>
+                            <li><span class="font-medium text-white">UES</span> (froid, CVC, éclairage, eau, process).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
 
-                <!-- Carrefour France -->
-                <div class="p-4 rounded-lg bg-white border border-[#e74c3c]/30">
-                    <p class="font-bold text-[#e74c3c] mb-2 flex items-center">
-                        <i data-lucide="store" class="w-4 h-4 mr-1"></i> Pour Carrefour France
-                    </p>
-                    <ul class="list-disc list-inside space-y-1 text-gray-700">
-                        <li>Vision claire <strong>2026–2028</strong> pour la MDE.</li>
-                        <li><strong>Gouvernance renforcée</strong> avec prestataires et régions.</li>
-                        <li>Base solide pour industrialiser la performance énergétique à l’échelle du parc.</li>
-                    </ul>
+            <!-- SLIDE 6 – Référentiel d’actions -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-emerald-400 mb-2 uppercase">Partie 2 · Référentiel d’actions</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Un plan d’actions MDE standardisé et mesurable
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 w-full">
+                    <div class="info-card border-l-4 border-sky-400">
+                        <p class="font-bold text-xl mb-3 text-sky-300">Métadonnées minimales</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li><span class="font-medium">Identification :</span> site, format, région / territoire.</li>
+                            <li><span class="font-medium">Contextualisation :</span> UES (froid, CVC, éclairage, eau…), origine (GTB, TOP/FLOP, audit, remontée magasin).</li>
+                            <li><span class="font-medium">Pilotage :</span> responsable, échéance, statut (à faire / en cours / terminé).</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card border-l-4 border-emerald-400">
+                        <p class="font-bold text-xl mb-3 text-emerald-300">Mesure et vérification</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Gain estimé (kWh, % ou EnPI) et période de référence.</li>
+                            <li>Gain mesuré après mise en œuvre (méthode simple type IPMVP A/B, articulée avec l’IPMVP C site).</li>
+                            <li>Lien direct avec les indicateurs Décret tertiaire et la revue ISO 50001.</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- SLIDE 7 – Pilotage UES -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-emerald-400 mb-2 uppercase">Partie 2 · Moteur de mesure</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Dépasser l’IPMVP global par le pilotage UES
+                </h2>
+
+                <ul class="list-disc list-inside text-lg space-y-4 text-slate-200 ml-6 w-4/5 mx-auto">
+                    <li><span class="font-bold text-white">Référentiel national UES :</span> classification standard des usages (froid, CVC, éclairage, eau, process spécifiques).</li>
+                    <li><span class="font-bold text-white">Indicateurs UES :</span> KPI adaptés : kWhEP/m² corrigé, kWh/heure d’ouverture, kWh par meuble froid, etc.</li>
+                    <li><span class="font-bold text-white">IPMVP Option C maintenu :</span> reste l’indicateur de performance globale site / parc.</li>
+                    <li><span class="font-bold text-white">Nouvelle capacité :</span> justifier les gains par action et par usage :
+                        <ul class="list-disc list-inside ml-8 mt-2 text-base text-slate-400 space-y-1">
+                            <li>« Ce réglage CVC a généré X MWh et est duplicable sur 50 hypers. »</li>
+                            <li>« Les actions éclairage expliquent 15 % de l’atteinte du palier Décret tertiaire. »</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SLIDE 8 – Introduction scénarios -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-purple-400 mb-2 uppercase">Partie 3 · Choix d’architecture</p>
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    Trois scénarios pour réaliser le référentiel unique
+                </h2>
+                <p class="text-lg text-slate-200 mb-8">
+                    Comparaison des options pour centraliser le Référentiel Unique d’Actions (RUA) et le M&V associé.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-6 w-full text-center">
+                    <div class="info-card border-t-4 border-emerald-500">
+                        <p class="font-extrabold text-2xl text-emerald-400 mb-2">Scénario 1</p>
+                        <p class="font-semibold text-lg text-white mb-1">SAVEE central</p>
+                        <p class="text-sm text-slate-300">
+                            SAVEE (Advizeo) reste le cœur des plans d’actions et du M&V opérationnel.
+                            Les GTB et dataviz poussent leurs dérives et actions vers SAVEE.
+                        </p>
+                    </div>
+                    <div class="info-card border-t-4 border-sky-500">
+                        <p class="font-extrabold text-2xl text-sky-400 mb-2">Scénario 2</p>
+                        <p class="font-semibold text-lg text-white mb-1">GTB & dataviz au centre</p>
+                        <p class="text-sm text-slate-300">
+                            Sensinov / Eficia pilotent détection, actions et suivi. Advizeo se recentre sur le M&V global.
+                        </p>
+                    </div>
+                    <div class="info-card border-t-4 border-indigo-500">
+                        <p class="font-extrabold text-2xl text-indigo-400 mb-2">Scénario 3</p>
+                        <p class="font-semibold text-lg text-white mb-1">Outil interne dédié</p>
+                        <p class="text-sm text-slate-300">
+                            Développement d’un « Energy Board Carrefour » intégrant toutes les actions, UES et KPI ISO / Décret tertiaire.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9 – Scénario 1 détaillé -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-purple-400 mb-2 uppercase">Partie 3 · Scénario 1</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Scénario 1 : SAVEE central – le plus stable à court terme
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 w-full">
+                    <div class="info-card border-l-4 border-emerald-400">
+                        <p class="font-bold text-xl mb-3 text-emerald-300 flex items-center">
+                            <svg class="icon" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Avantages clés
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Alignement direct avec l’IPMVP Option C et la gouvernance ISO existante.</li>
+                            <li>Centralisation immédiate des actions et des gains mesurés (RUA).</li>
+                            <li>Impact limité sur l’organisation et sur le SI à court terme.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card border-l-4 border-amber-400">
+                        <p class="font-bold text-xl mb-3 text-amber-300 flex items-center">
+                            <svg class="icon" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.398 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                            Points de vigilance
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li>Dépendance forte à Advizeo pour l’évolution UES / RUA.</li>
+                            <li>Besoin d’interfaces robustes avec GTB, dataviz, Energy Center.</li>
+                            <li>Lisibilité à clarifier pour les équipes : GTB pour agir / SAVEE pour tracer.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 10 – Synthèse & trajectoire -->
+            <section class="slide flex-col justify-center">
+                <p class="text-lg font-semibold text-purple-400 mb-2 uppercase">Partie 3 · Synthèse & trajectoire</p>
+                <h2 class="text-4xl font-bold mb-8 text-white">
+                    Recommandation : une trajectoire 1 → 3
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8 w-full">
+                    <div class="info-card border-l-4 border-sky-400">
+                        <p class="font-bold text-xl mb-3 text-sky-300">Évaluation des alternatives</p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-sm">
+                            <li><span class="font-medium text-sky-200">Scénario 2 (GTB central) :</span> proximité forte entre dérive et réglage, mais double dépendance prestataires et difficulté à reconstruire une vision ISO / Décret robuste.</li>
+                            <li><span class="font-medium text-indigo-200">Scénario 3 (outil interne) :</span> contrôle total du modèle de données (UES, RUA, KPI), meilleure réversibilité, mais investissement IT et gouvernance data significatifs.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card border-l-4 border-emerald-400">
+                        <p class="font-bold text-xl mb-3 text-emerald-300">Trajectoire recommandée</p>
+                        <ul class="list-disc list-inside space-y-3 text-slate-200 ml-4 text-sm">
+                            <li><span class="font-medium text-white">Court terme :</span> valider et optimiser le
+                                <span class="font-bold">scénario 1 (SAVEE central)</span>, avec flux GTB/Eficia/Sensinov → SAVEE cadrés, et intégration de la vérification des gains.
+                            </li>
+                            <li><span class="font-medium text-white">Moyen terme :</span> cadrer le
+                                <span class="font-bold">scénario 3 (Energy Board Carrefour)</span>, en internalisant progressivement les besoins ISO / Décret tertiaire.
+                            </li>
+                        </ul>
+                        <p class="mt-4 font-extrabold text-lg text-emerald-300">
+                            Décision attendue : validation du principe de RUA et de la trajectoire 1 → 3.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER & NAVIGATION SLIDES -->
+    <footer class="px-8 py-4 border-t border-slate-700 bg-slate-900/90 backdrop-blur-md flex items-center justify-between">
+        <p class="text-xs text-slate-500">
+            © Carrefour France – Direction Technique & Fonctions Support
+        </p>
+        <div class="flex gap-3">
+            <button id="prev-btn"
+                    class="px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-700 disabled:opacity-40 disabled:hover:bg-transparent transition duration-150">
+                ← Précédent
+            </button>
+            <button id="next-btn"
+                    class="px-4 py-2 rounded-lg bg-emerald-600 text-slate-900 text-sm font-bold hover:bg-emerald-500 disabled:opacity-40 disabled:hover:bg-emerald-600 transition duration-150">
+                Suivant →
+            </button>
         </div>
     </footer>
 </div>
 
 <script>
-    // Initialisation des icônes Lucide
-    lucide.createIcons();
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const counterEl = document.getElementById('slide-counter');
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const deck = document.getElementById('deck');
+
+    let currentSlide = -1;
+
+    function updateSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+
+        // Masquer l’ancienne slide si nécessaire
+        if (currentSlide !== -1) {
+            slides[currentSlide].classList.remove('slide-active');
+            slides[currentSlide].style.display = 'none';
+        }
+
+        currentSlide = index;
+
+        // Afficher la nouvelle slide
+        const slide = slides[currentSlide];
+        slide.style.display = 'flex';
+        // reflow pour la transition
+        void slide.offsetHeight;
+        slide.classList.add('slide-active');
+
+        // UI
+        counterEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        const nextIndex = currentSlide + 1;
+        if (nextIndex < slides.length) updateSlide(nextIndex);
+    });
+
+    prevBtn.addEventListener('click', () => {
+        const prevIndex = currentSlide - 1;
+        if (prevIndex >= 0) updateSlide(prevIndex);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            const nextIndex = currentSlide + 1;
+            if (nextIndex < slides.length) updateSlide(nextIndex);
+        }
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const prevIndex = currentSlide - 1;
+            if (prevIndex >= 0) updateSlide(prevIndex);
+        }
+    });
+
+    fullscreenBtn.addEventListener('click', async () => {
+        try {
+            if (!document.fullscreenElement) {
+                await deck.requestFullscreen();
+                fullscreenBtn.textContent = 'Quitter le plein écran';
+            } else {
+                await document.exitFullscreen();
+                fullscreenBtn.textContent = 'Plein écran';
+            }
+        } catch (e) {
+            console.error('Erreur plein écran :', e);
+        }
+    });
+
+    // Initialisation
+    window.addEventListener('load', () => {
+        updateSlide(0);
+    });
 </script>
 
 </body>
 </html>
-
