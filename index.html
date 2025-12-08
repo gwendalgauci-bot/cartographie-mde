@@ -118,6 +118,7 @@
             </div>
         </div>
     </div>
+
 <header class="bg-gradient-to-r from-blue-700 to-emerald-600 text-white py-12 px-4 shadow-lg">
     <div class="max-w-7xl mx-auto text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Cartographie MDE</h1>
@@ -144,11 +145,11 @@
                 <div class="space-y-4 text-sm">
                     <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
                         <span class="text-blue-800 block mb-1 font-semibold">Hyper</span>
-                        GTB Sensinov (CVC/Éclairage), BeeBryte (Froid), frigoristes.
+                        GTB Sensinov (CVC/Éclairage), BeeBryte (Froid), frigoristes et mainteneurs CVC.
                     </div>
                     <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
                         <span class="text-emerald-800 block mb-1 font-semibold">Market</span>
-                        GTB EFICIA (site), frigoristes.
+                        GTB EFICIA (site), frigoristes et mainteneurs CVC.
                     </div>
                 </div>
             </div>
@@ -160,11 +161,12 @@
                 <div class="space-y-4 text-sm">
                     <div class="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
                         <span class="text-blue-800 block mb-1 font-semibold">Hyper <span class="data-viz-indicator">DATA VIZ</span></span>
-                        Anomalies Sensinov, dashboards Grafana (CVC, eau, comptage), rapport hebdomadaire talon électrique Advizeo.
+                        Anomalies Sensinov, dashboards Grafana (CVC, eau, comptage), rapport hebdomadaire talon électrique Advizeo,
+                        pushmails d’alerte (mail/SMS) vers CMM et mainteneurs CVC.
                     </div>
                     <div class="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
                         <span class="text-emerald-800 block mb-1 font-semibold">Market <span class="data-viz-indicator">DATA VIZ</span></span>
-                        EFICIA Energy Center ( via tickets), dashboards Eficia (CVC, comptage, programmes horaires).
+                        EFICIA Energy Center (via tickets et pushmails), dashboards Eficia (CVC, comptage, programmes horaires).
                     </div>
                 </div>
             </div>
@@ -179,7 +181,7 @@
                         <p class="font-semibold text-slate-800">Advizeo / SAVEE</p>
                         <ul class="list-disc list-inside text-slate-600 mt-1 text-xs space-y-1">
                             <li>Validation des gains MDE (IPMVP option C, DJU).</li>
-                            <li>Reporting TOP/FLOP.</li>
+                            <li>Reporting TOP/FLOP et pushmails associés.</li>
                             <li>Gestion du plan d'actions MDE (SAVEE).</li>
                         </ul>
                     </div>
@@ -236,14 +238,14 @@
                         <div class="space-y-4 text-sm">
                             <div class="border-l-4 border-blue-400 pl-3">
                                 <span class="text-sm text-slate-900 font-semibold">GTB Sensinov</span>
-                                <p class="text-xs text-slate-600">Programmation détaillée (CVC/Éclairage). Traçabilité complète des forçages et calendriers.</p>
+                                <p class="text-xs text-slate-600">Programmation détaillée (CVC/Éclairage). Traçabilité complète des forçages, calendriers et pushmails d’alerte vers CMM / mainteneurs CVC.</p>
                             </div>
                             <div class="border-l-4 border-blue-400 pl-3">
                                 <span class="text-sm text-slate-900 font-semibold">BeeBryte (optimisation Froid)</span>
                                 <p class="text-xs text-slate-600">Analyse continue et modulation algorithmique des systèmes de froid sur certains sites.</p>
                             </div>
                             <div class="border-l-4 border-blue-400 pl-3">
-                                <span class="text-sm text-slate-900 font-semibold">Frigoristes / prestataires</span>
+                                <span class="text-sm text-slate-900 font-semibold">Frigoristes / mainteneurs CVC / autres prestataires</span>
                                 <p class="text-xs text-slate-600">Exécution des réglages précis (curatif et MDE) sur instructions CMM et/ou plans d’actions.</p>
                             </div>
                         </div>
@@ -261,9 +263,9 @@
                         <h4 class="text-lg font-bold text-[var(--color-hyper)] mb-3">Surveillance et analyse des données</h4>
                         <p class="text-sm font-semibold text-slate-800 mb-2">Outils de détection <span class="data-viz-indicator">DATA VIZ</span> :</p>
                         <ul class="text-sm space-y-1 list-disc list-inside text-blue-700 bg-blue-50 p-3 rounded-lg border border-blue-200">
-                            <li><strong>Sensinov (module Anomalies)</strong> : détection automatique (talon, consommation anormale, eau et CVC) et alertes.</li>
+                            <li><strong>Sensinov (module Anomalies)</strong> : détection automatique (talon, consommation anormale, eau et CVC), alertes et pushmails vers CMM / mainteneurs CVC.</li>
                             <li><strong>Dashboards Grafana</strong> : supervision technique (courbes de charge, sondes, consignes, CVC, eau, comptage, météo).</li>
-                            <li><strong>Rapports hebdomadaires Advizeo</strong> : surveillance du talon électrique et des dérives TOP/FLOP.</li>
+                            <li><strong>Rapports hebdomadaires Advizeo</strong> : surveillance du talon électrique et des dérives TOP/FLOP, avec alertes partagées.</li>
                         </ul>
                         <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded-lg border border-yellow-300 font-medium">
                             <strong>Rôle clé CMM / manager énergie :</strong> utiliser Sensinov et Grafana pour repérer les dérives, croiser avec les TOP/FLOP et transformer ces signaux en actions MDE.
@@ -281,7 +283,7 @@
                     <div class="card-level bg-white p-6 rounded-xl shadow-lg border-l-8 border-[var(--color-action)]">
                         <h4 class="text-lg font-bold text-[var(--color-action)] mb-2">Pilotage plan d'actions MDE (Advizeo/SAVEE)</h4>
                         <div class="mb-3 text-sm">
-                            <span class="text-action font-bold">Advizeo / SAVEE :</span> consolidation des gains IPMVP, suivi des TOP/FLOP, pilotage du plan d'actions MDE Hyper.
+                            <span class="text-action font-bold">Advizeo / SAVEE :</span> consolidation des gains IPMVP, suivi des TOP/FLOP, pushmails associés et pilotage du plan d'actions MDE Hyper.
                         </div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
                             <li>Formalisation des signaux (via les visites sur site des EM Advizeo) en actions traçables dans SAVEE.</li>
@@ -329,10 +331,10 @@
                         <div class="space-y-4 text-sm">
                             <div class="border-l-4 border-emerald-400 pl-3">
                                 <span class="text-sm text-slate-900 font-semibold">GTB EFICIA (site)</span>
-                                <p class="text-xs text-slate-600">Actionneurs TGBT/DALI. Programmation des horaires et consignes pilotée à distance par Eficia.</p>
+                                <p class="text-xs text-slate-600">Actionneurs TGBT/DALI. Programmation des horaires et consignes pilotée à distance par Eficia, avec pushmails d’alerte vers magasins et mainteneurs CVC.</p>
                             </div>
                             <div class="border-l-4 border-emerald-400 pl-3">
-                                <span class="text-sm text-slate-900 font-semibold">Frigoristes / prestataires</span>
+                                <span class="text-sm text-slate-900 font-semibold">Frigoristes / mainteneurs CVC / autres prestataires</span>
                                 <p class="text-xs text-slate-600">Interventions techniques suite aux tickets générés par l'Energy Center ou Advizeo.</p>
                             </div>
                         </div>
@@ -350,7 +352,7 @@
                         <h4 class="text-lg font-bold text-[var(--color-market)] mb-3">Surveillance et détection (centralisé)</h4>
                         <div class="text-sm font-semibold text-slate-800 mb-2">Organisation dédiée :</div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-emerald-700 bg-emerald-50 p-3 rounded-lg border border-emerald-200">
-                            <li><strong>EFICIA Energy Center :</strong> génération de tickets automatiques (forçages, pertes de communication, consommations nocturnes anormales, défauts coffrets GTB).</li>
+                            <li><strong>EFICIA Energy Center :</strong> génération de tickets automatiques (forçages, pertes de communication, consommations nocturnes anormales, défauts coffrets GTB) et pushmails associés.</li>
                             <li><strong>Dataviz Eficia <span class="data-viz-indicator">DATA VIZ</span> :</strong> supervision centralisée (CVC, comptage, programmes horaires, eau, parfois froid).</li>
                         </ul>
                         <div class="mt-3 text-xs bg-yellow-50 text-yellow-800 p-2 rounded-lg border border-yellow-300 font-medium">
@@ -369,7 +371,7 @@
                     <div class="card-level bg-white p-6 rounded-xl shadow-lg border-l-8 border-[var(--color-action)]">
                         <h4 class="text-lg font-bold text-[var(--color-action)] mb-2">Pilotage plan d'actions MDE (Advizeo/SAVEE)</h4>
                         <div class="mb-3 text-sm">
-                            <span class="text-action font-bold">Advizeo / SAVEE :</span> consolidation des gains IPMVP, suivi des TOP/FLOP, pilotage du plan d’actions MDE Markets.
+                            <span class="text-action font-bold">Advizeo / SAVEE :</span> consolidation des gains IPMVP, suivi des TOP/FLOP, pushmails associés et pilotage du plan d’actions MDE Markets.
                         </div>
                         <ul class="text-sm space-y-1 list-disc list-inside text-slate-700">
                             <li>Formalisation des actions issues de l'Energy Center et des analyses Advizeo en plan d’actions SAVEE.</li>
@@ -409,7 +411,7 @@
                             <li>Définit le référentiel commun (UES, indicateurs, consignes, règles de déclenchement).</li>
                             <li>Structure les plans d’actions nationaux et consolide les résultats.</li>
                             <li>Pilote la M&V et les prestation MDE externes (Advizeo, GTB, Eficia, BeeBryte).</li>
-                            <li>Compile et suit l'ensembles des actions MDE sur le territoire.</li>
+                            <li>Compile et suit l'ensemble des actions MDE sur le territoire.</li>
                             <li>Aide et accompagne le référent énergie sur l'ensemble de ses tâches.</li>
                         </ul>
                     </div>
@@ -426,7 +428,6 @@
                             <li>Anime un suivi régulier avec les CMM (points courts hebdomadaires) pour s’assurer que les actions avancent.</li>
                             <li>Rôle cible : référent énergie dédiée, distincte du CMM qui est déjà chargé des travaux et de la maintenance curative.</li>
                             <li>Fait remonter les freins terrain et les gains locaux au national pour ajuster la stratégie.</li>
-                            
                         </ul>
                     </div>
                 </div>
@@ -434,7 +435,7 @@
                 <div class="bg-cyan-50 border border-cyan-200 rounded-xl p-4 mt-6">
                     <h5 class="text-sm font-bold text-cyan-800 mb-1">Synergie national / régional</h5>
                     <p class="text-xs md:text-sm text-slate-700">
-                        Le national donne la direction et le cadre ; le régional exploite les données (Grafana, Eficia, Advizeo) avec le MDE, pilote le plan d’actions par UES avec le CMM avec l'aide du MDE , et alimente la boucle d’amélioration continue ISO 50001.
+                        Le national donne la direction et le cadre ; le régional exploite les données (Grafana, Eficia, Advizeo) avec le MDE, pilote le plan d’actions par UES avec le CMM avec l'aide du MDE, et alimente la boucle d’amélioration continue ISO 50001.
                     </p>
                 </div>
             </div>
@@ -469,7 +470,7 @@
                         <ol class="list-decimal list-inside text-sm space-y-2 text-slate-100">
                             <li>
                                 <strong>Détection hebdomadaire structurée :</strong>
-                                agrégation dans un tableau de bord unique des rapports hebdomadaires TOP/FLOP Advizeo, des anomalies N2 (Sensinov, Grafana, Eficia) et des retours magasins.
+                                agrégation dans un tableau de bord unique des rapports hebdomadaires TOP/FLOP Advizeo, des anomalies N2 (Sensinov, Grafana, Eficia) et des retours magasins / pushmails.
                             </li>
                             <li>
                                 <strong>Règle de déclenchement :</strong>
@@ -526,148 +527,18 @@
             <!-- Scénarios -->
             <h4 class="text-2xl font-bold text-slate-800 mt-12 mb-6 text-center border-b-2 border-slate-200 inline-block mx-auto pb-1">3. Scénarios pour atteindre le référentiel unique</h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Scénario 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-action)]">
-                    <h5 class="text-xl font-bold text-[var(--color-action)] mb-3">Scénario 1 : SAVEE central (impact technique limité)</h5>
-                    <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li><strong>Advizeo/SAVEE</strong> est l’outil central pour le suivi MDE, la planification des actions et le M&V.</li>
-                        <li><strong>Sensinov, Grafana et Eficia</strong> poussent leurs dérives et tickets vers SAVEE via API ou interface standardisée.</li>
-                        <li><strong>Avantage :</strong> consolidation maximale, alignement sur l’outil IPMVP déjà existant, bonne cohérence avec la boucle hebdomadaire.</li>
-                    </ul>
-                </div>
-
-                <!-- Scénario 2 -->
+                <!-- Scénario 1 (GTB/Dataviz au centre) -->
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-hyper)]">
-                    <h5 class="text-xl font-bold text-[var(--color-hyper)] mb-3">Scénario 2 : GTB/Dataviz au centre</h5>
+                    <h5 class="text-xl font-bold text-[var(--color-hyper)] mb-3">Scénario 1 : GTB/Dataviz au centre</h5>
                     <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li>Les fournisseurs GTB (Sensinov, Eficia) développent des modules complets de plan d’actions intégrés à leurs plateformes.</li>
+                        <li>Les fournisseurs GTB (Sensinov, Eficia) développent des modules complets de plan d’actions intégrés à leurs plateformes (y compris pushmails et tickets).</li>
                         <li>Advizeo se concentre sur le calcul des gains IPMVP et un reporting global.</li>
                         <li><strong>Risque :</strong> fragmentation de la donnée, double saisie, difficulté à garder une vue unique par UES et par territoire.</li>
                     </ul>
                 </div>
 
-                <!-- Scénario 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-target)]">
-                    <h5 class="text-xl font-bold text-[var(--color-target)] mb-3">Scénario 3 : outil interne dédié</h5>
+                <!-- Scénario 2 (SAVEE central) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-action)]">
+                    <h5 class="text-xl font-bold text-[var(--color-action)] mb-3">Scénario 2 : SAVEE central (impact technique limité)</h5>
                     <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li>Développement d’un outil interne unique (par exemple un Energy Board dans Qlik) qui agrège toutes les actions MDE et travaux.</li>
-                        <li>Intégrations API avec Sensinov, Grafana, Eficia, Advizeo et éventuellement BeeBryte.</li>
-                        <li><strong>Avantage :</strong> contrôle complet sur la donnée, les UES et les règles de déclenchement, au prix d’un investissement IT plus élevé.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- SYNTHÈSE DES DIFFÉRENCES -->
-        <div class="mt-20">
-            <h4 class="text-3xl font-bold text-slate-800 mb-6 text-center border-b-2 border-slate-200 inline-block mx-auto pb-1">Synthèse : écarts structuraux Hyper vs Market</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-slate-100 rounded-xl shadow-inner">
-
-                <div class="p-4 bg-white rounded-lg shadow border-l-4 card-hyper">
-                    <h5 class="text-xl font-bold text-[var(--color-hyper)] mb-3 flex items-center">
-                        <span class="mr-2">🏪</span> Hypermarchés (Hyper)
-                    </h5>
-                    <ul class="text-sm space-y-3 text-slate-700">
-                        <li><strong>Pilotage MDE :</strong> pilotage fortement <span class="font-semibold">localisé</span>, exécuté par le CMM et l’équipe technique, avec appui du manager régional.</li>
-                        <li><strong>Outils de détection (N2) :</strong> multiples sources (Sensinov, Grafana, rapports Advizeo). L’analyse est plus manuelle et demande une forte implication interne pour relier dérives et actions.</li>
-                        <li><strong>Froid :</strong> optimisation spécifique BeeBryte sur certains sites, en plus de la GTB CVC/Éclairage.</li>
-                        <li><strong>Tracé :</strong> traçabilité plus fragmentée, dépendante de la discipline locale et du temps disponible côté CMM.</li>
-                    </ul>
-                </div>
-
-                <div class="p-4 bg-white rounded-lg shadow border-l-4 card-market">
-                    <h5 class="text-xl font-bold text-[var(--color-market)] mb-3 flex items-center">
-                        <span class="mr-2">🛒</span> Markets (Market)
-                    </h5>
-                    <ul class="text-sm space-y-3 text-slate-700">
-                        <li><strong>Pilotage MDE :</strong> pilotage plus <span class="font-semibold">centralisé</span> via l’Energy Center Eficia qui génère des tickets vers le N1. Autonomie MDE limitée sur site.</li>
-                        <li><strong>Outils de détection (N2) :</strong> plateforme Eficia unique (Energy Center + Dataviz). La détection des dérives est plus automatisée et se traduit directement par des tickets d’action.</li>
-                        <li><strong>Froid/CVC :</strong> gestion intégrée à la GTB Eficia (programmes, consignes, comptage).</li>
-                        <li><strong>Tracé :</strong> chaîne plus directe entre dérive détectée, ticket et action, avant passage éventuel par Advizeo/SAVEE.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-</main>
-
-<footer class="bg-slate-900 text-white text-center py-6 mt-12">
-    <p class="text-sm">Infographie Maîtrise de l'Énergie (MDE) - Mise à jour 2025</p>
-</footer>
-
-<script>
-    // Ajout d'une simple fonction de bascule pour les détails si besoin
-    function toggleDetails(elementId) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.classList.toggle('hidden');
-        }
-    }
-
-    window.onload = function () {
-        // Le code Chart.js pourrait être ajouté ici si des graphiques étaient nécessaires.
-    };
-</script>
-<script>
-    (function () {
-        const toggle = document.getElementById('site-nav-toggle');
-        const panel = document.getElementById('site-nav-panel');
-        const closeBtn = document.getElementById('site-nav-close');
-
-        if (!toggle || !panel) return;
-
-        // ouverture / fermeture
-        toggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            panel.classList.toggle('hidden');
-        });
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                panel.classList.add('hidden');
-            });
-        }
-
-        // fermer si on clique en dehors
-        document.addEventListener('click', (e) => {
-            if (panel.classList.contains('hidden')) return;
-            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
-                panel.classList.add('hidden');
-            }
-        });
-
-        // surligner la page active dans le menu
-        const links = panel.querySelectorAll('.site-nav-link');
-        const path = window.location.pathname;
-
-        links.forEach((link) => {
-            const page = link.dataset.page;
-            if (!page) return;
-
-            const isIndex =
-                page === 'index.html' &&
-                (path.endsWith('/') || path.endsWith('/index.html') || path === '');
-
-            const isMatch = path.endsWith(page) || isIndex;
-
-            if (isMatch) {
-                link.classList.add('bg-slate-800', 'text-emerald-300', 'font-semibold');
-            }
-        });
-    })();
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
+                        <li><strong>Advizeo/SA
