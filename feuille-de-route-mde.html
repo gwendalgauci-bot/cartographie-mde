@@ -8,17 +8,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f7f7f7;
             min-height: 100vh;
         }
-        html {
-    scroll-behavior: smooth;
-}
+
         .infographic-container {
             width: 100%;
             max-width: 1400px;
@@ -92,11 +95,11 @@
                 flex-direction: column;
             }
         }
-    </>
+    </style>
 </head>
 <body>
 
-        <!-- MENU GLOBAL ENTRE LES PAGES MDE -->
+    <!-- MENU GLOBAL ENTRE LES PAGES MDE -->
     <div class="fixed left-2 top-1/2 -translate-y-1/2 z-50">
         <div class="relative">
             <button id="site-nav-toggle"
@@ -136,7 +139,6 @@
             </div>
         </div>
     </div>
-</nav>
 
 <div class="infographic-container">
     <!-- TÊTE D’AFFICHE -->
@@ -159,32 +161,38 @@
     </header>
 
     <div class="layout-main flex flex-col md:flex-row">
-        <!-- LÉGENDE DES 5 AXES -->
+        <!-- LÉGENDE DES 5 AXES (CLICABLE) -->
         <aside class="md:w-1/5 md:pr-4 md:border-r border-gray-200 mb-6 md:mb-0">
             <h3 class="text-base font-bold text-gray-800 mb-4 uppercase tracking-wider">
                 Légende des 5 axes
             </h3>
             <div class="space-y-3">
-                <div class="color-Axe1 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
+
+                <a href="#axe1" class="block color-Axe1 p-3 rounded-xl flex items-center shadow-sm bg-white/60 hover:bg-white">
                     <i data-lucide="target" class="w-5 h-5 mr-2"></i>
                     <span class="font-semibold text-sm">Axe 1 – Politique &amp; objectifs</span>
-                </div>
-                <div class="color-Axe2 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
+                </a>
+
+                <a href="#axe2" class="block color-Axe2 p-3 rounded-xl flex items-center shadow-sm bg-white/60 hover:bg-white">
                     <i data-lucide="pie-chart" class="w-5 h-5 mr-2"></i>
                     <span class="font-semibold text-sm">Axe 2 – Pilotage par UES &amp; revue</span>
-                </div>
-                <div class="color-Axe3 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
+                </a>
+
+                <a href="#axe3" class="block color-Axe3 p-3 rounded-xl flex items-center shadow-sm bg-white/60 hover:bg-white">
                     <i data-lucide="cloud-cog" class="w-5 h-5 mr-2"></i>
                     <span class="font-semibold text-sm">Axe 3 – Outils &amp; data MDE</span>
-                </div>
-                <div class="color-Axe4 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
+                </a>
+
+                <a href="#axe4" class="block color-Axe4 p-3 rounded-xl flex items-center shadow-sm bg-white/60 hover:bg-white">
                     <i data-lucide="users" class="w-5 h-5 mr-2"></i>
                     <span class="font-semibold text-sm">Axe 4 – Coordination prestataires</span>
-                </div>
-                <div class="color-Axe5 p-3 rounded-xl flex items-center shadow-sm bg-white/60">
+                </a>
+
+                <a href="#axe5" class="block color-Axe5 p-3 rounded-xl flex items-center shadow-sm bg-white/60 hover:bg-white">
                     <i data-lucide="map" class="w-5 h-5 mr-2"></i>
                     <span class="font-semibold text-sm">Axe 5 – Animation réseau &amp; périmètres</span>
-                </div>
+                </a>
+
             </div>
         </aside>
 
@@ -202,8 +210,8 @@
                 <!-- AXE 1 -->
                 <div class="col-span-3">
                     <h4 id="axe1" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-        AXE 1 – POLITIQUE, OBJECTIFS, TRAJECTOIRE 2030
-    </h4>
+                        AXE 1 – POLITIQUE, OBJECTIFS, TRAJECTOIRE 2030
+                    </h4>
                 </div>
 
                 <div class="color-Axe1 axis-box">
@@ -244,9 +252,9 @@
 
                 <!-- AXE 2 -->
                 <div class="col-span-3 mt-4">
-                    h4 id="axe2" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-        AXE 2 – PILOTAGE PAR UES &amp; REVUE ÉNERGÉTIQUE
-    </h4>
+                    <h4 id="axe2" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
+                        AXE 2 – PILOTAGE PAR UES &amp; REVUE ÉNERGÉTIQUE
+                    </h4>
                 </div>
 
                 <div class="color-Axe2 axis-box">
@@ -268,7 +276,7 @@
                     </div>
                     <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
                         <li>Cartographier compteurs et sous-compteurs sur les hypers instrumentés.</li>
-                        <li>Documenter « divers », trous, incohérences.</li>
+                        <li>Documenter « divers », trous et incohérences.</li>
                         <li>Écrire les règles d’affectation des compteurs aux UES.</li>
                     </ul>
                 </div>
@@ -299,9 +307,9 @@
 
                 <!-- AXE 3 -->
                 <div class="col-span-3 mt-4">
-                     <h4 id="axe3" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-        AXE 3 – OUTILS &amp; DATA MDE (SAVEE, EFICIA, SENSINOV, QLIK, OPERAT)
-    </h4>
+                    <h4 id="axe3" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
+                        AXE 3 – OUTILS &amp; DATA MDE (SAVEE, EFICIA, SENSINOV, QLIK, OPERAT)
+                    </h4>
                 </div>
 
                 <div class="color-Axe3 axis-box">
@@ -334,8 +342,8 @@
                 <!-- AXE 4 -->
                 <div class="col-span-3 mt-4">
                     <h4 id="axe4" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-        AXE 4 – COORDINATION PRESTATAIRES
-    </h4>
+                        AXE 4 – COORDINATION PRESTATAIRES
+                    </h4>
                 </div>
 
                 <div class="color-Axe4 axis-box">
@@ -368,8 +376,8 @@
                 <!-- AXE 5 -->
                 <div class="col-span-3 mt-4">
                     <h4 id="axe5" class="text-xs font-bold uppercase mb-2 text-gray-500 border-b border-gray-200 py-1">
-        AXE 5 – ANIMATION RÉSEAU &amp; PÉRIMÈTRES
-    </h4>
+                        AXE 5 – ANIMATION RÉSEAU &amp; PÉRIMÈTRES
+                    </h4>
                 </div>
 
                 <div class="color-Axe5 axis-box">
@@ -377,14 +385,14 @@
                     <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
                         <li>Construire un kit MDE pour les régions : modèle de plan MDE, trame de revue énergétique.</li>
                         <li>Définir un kit standard de suivi site (objectifs, indicateurs, liste d’actions).</li>
-                        <li>Diffuser le kit aux managers / référents énergie régionaux.</li>
+                        <li>Diffuser le kit aux managers et référents énergie régionaux.</li>
                     </ul>
                 </div>
 
                 <div class="color-Axe5 axis-box">
                     <div class="axis-title">Régions pilotes</div>
                     <ul class="text-xs list-disc list-inside space-y-0.5 mt-1 text-gray-700">
-                        <li>Sélectionner 1 à 2 régions pilotes (ex. Sud-Est + 1 autre).</li>
+                        <li>Sélectionner 1 à 2 régions pilotes (ex. Sud-Est plus une autre).</li>
                         <li>Tester revue énergétique standard par site, nouveaux rituels MDE, déclinaison d’objectifs.</li>
                         <li>Capitaliser les retours pour ajuster méthode et outils.</li>
                     </ul>
@@ -416,7 +424,7 @@
                     </p>
                     <ul class="list-disc list-inside space-y-1 text-gray-700">
                         <li>Politique énergie révisée avec notion de <strong>performance énergétique</strong> et UES.</li>
-                        <li>Revue énergétique sites + méthode de mesure par UES (NC majeures levées).</li>
+                        <li>Revue énergétique sites plus méthode de mesure par UES (NC majeures levées).</li>
                         <li>Objectifs et actions tracés, gains mesurés et <strong>démontrés</strong>.</li>
                     </ul>
                 </div>
@@ -450,69 +458,46 @@
 </div>
 
 <script>
-    // Initialisation des icônes Lucide
+    // Icônes Lucide
     lucide.createIcons();
 
-    // Toggle du menu de navigation
-    const navToggle = document.getElementById('nav-toggle');
-    const navPanel  = document.getElementById('nav-panel');
+    // Navigation globale entre les pages : ouverture / fermeture
+    const navToggle = document.getElementById('site-nav-toggle');
+    const navPanel  = document.getElementById('site-nav-panel');
+    const navClose  = document.getElementById('site-nav-close');
 
-    navToggle.addEventListener('click', () => {
-        navPanel.classList.toggle('hidden');
+    if (navToggle && navPanel) {
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navPanel.classList.toggle('hidden');
+        });
+    }
+
+    if (navClose && navPanel) {
+        navClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navPanel.classList.add('hidden');
+        });
+    }
+
+    // Fermeture si clic à l'extérieur
+    document.addEventListener('click', (e) => {
+        if (!navPanel) return;
+        if (!navPanel.contains(e.target) && !navToggle.contains(e.target)) {
+            navPanel.classList.add('hidden');
+        }
+    });
+
+    // Mise en évidence de la page courante dans le menu
+    const links = document.querySelectorAll('.site-nav-link');
+    const current = window.location.pathname.split('/').pop() || 'index.html';
+
+    links.forEach(link => {
+        if (link.dataset.page === current) {
+            link.classList.add('bg-emerald-500', 'text-slate-900', 'font-semibold');
+        }
     });
 </script>
-<script>
-    (function () {
-        const toggle = document.getElementById('site-nav-toggle');
-        const panel = document.getElementById('site-nav-panel');
-        const closeBtn = document.getElementById('site-nav-close');
 
-        if (!toggle || !panel) return;
-
-        // ouverture / fermeture
-        toggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            panel.classList.toggle('hidden');
-        });
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                panel.classList.add('hidden');
-            });
-        }
-
-        // fermer si on clique en dehors
-        document.addEventListener('click', (e) => {
-            if (panel.classList.contains('hidden')) return;
-            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
-                panel.classList.add('hidden');
-            }
-        });
-
-        // surligner la page active dans le menu
-        const links = panel.querySelectorAll('.site-nav-link');
-        const path = window.location.pathname;
-
-        links.forEach((link) => {
-            const page = link.dataset.page;
-            if (!page) return;
-
-            const isIndex =
-                page === 'index.html' &&
-                (path.endsWith('/') || path.endsWith('/index.html') || path === '');
-
-            const isMatch = path.endsWith(page) || isIndex;
-
-            if (isMatch) {
-                link.classList.add('bg-slate-800', 'text-emerald-300', 'font-semibold');
-            }
-        });
-    })();
-</script>
 </body>
 </html>
-
-
-
-
