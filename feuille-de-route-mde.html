@@ -94,46 +94,45 @@
 </head>
 <body>
 
-<!-- MENU DE NAVIGATION FLOTTANT (même que les autres pages, avec les bons liens) -->
-<nav id="page-nav" class="fixed left-6 top-24 z-50">
-    <button id="nav-toggle"
-            class="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-slate-100 shadow-xl border border-emerald-500/60 hover:bg-slate-800 transition">
-        <span class="text-sm font-medium">Navigation</span>
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-slate-900 text-xs font-bold">
-            ☰
-        </span>
-    </button>
+    <!-- MENU GLOBAL ENTRE LES PAGES MDE -->
+    <div class="fixed left-2 top-1/2 -translate-y-1/2 z-50">
+        <div class="relative">
+            <button id="site-nav-toggle"
+                    class="group flex items-center bg-slate-900/90 text-slate-100 text-xs px-2 py-2 rounded-full shadow-lg border border-slate-700 hover:bg-slate-800">
+                <span class="hidden sm:inline ml-1 mr-1">Navigation</span>
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-slate-900 font-bold text-xs">
+                    ≡
+                </span>
+            </button>
 
-    <div id="nav-panel"
-         class="mt-2 w-64 bg-slate-900 text-slate-100 rounded-2xl shadow-2xl border border-emerald-500/40 overflow-hidden hidden">
-        <div class="px-4 py-3 border-b border-slate-700/60 text-xs uppercase tracking-wide text-slate-400">
-            Pages MDE Carrefour
+            <div id="site-nav-panel"
+                 class="hidden mt-2 bg-slate-900/95 text-slate-100 text-xs rounded-xl shadow-xl border border-slate-700 px-2 py-2 w-52">
+                <button id="site-nav-close"
+                        class="w-full text-right text-[10px] text-slate-400 mb-1 hover:text-slate-200">
+                    ✕
+                </button>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="index.html" data-page="index.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Cartographie MDE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="feuille-de-route-mde.html" data-page="feuille-de-route-mde.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Feuille de route MDE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="strategieMDE.html" data-page="strategieMDE.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Stratégie MDE (slides)
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul class="text-sm">
-            <li>
-                <a href="index.html"
-                   class="flex items-center justify-between px-4 py-3 hover:bg-slate-800 transition">
-                    <span>Cartographie MDE (Flux & Outils)</span>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 border border-slate-600">N0–N3</span>
-                </a>
-            </li>
-            <li>
-                <a href="strategieMDE.html"
-                   class="flex items-center justify-between px-4 py-3 hover:bg-slate-800 transition">
-                    <span>Stratégie MDE (Slides dirigeants)</span>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 border border-slate-600">Présentation</span>
-                </a>
-            </li>
-            <li>
-                <a href="feuille-de-route-mde.html"
-                   class="flex items-center justify-between px-4 py-3 hover:bg-slate-800 transition">
-                    <span>Feuille de route Energy Manager</span>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/60 text-emerald-300">
-                        2026–2028
-                    </span>
-                </a>
-            </li>
-        </ul>
     </div>
 </nav>
 
@@ -463,3 +462,4 @@
 
 </body>
 </html>
+
