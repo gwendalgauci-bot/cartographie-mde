@@ -68,7 +68,46 @@
 <body class="bg-slate-950 text-slate-100">
 
 <div id="deck" class="min-h-screen flex flex-col">
+    <!-- MENU GLOBAL ENTRE LES PAGES MDE -->
+    <div class="fixed left-2 top-1/2 -translate-y-1/2 z-50">
+        <div class="relative">
+            <button id="site-nav-toggle"
+                    class="group flex items-center bg-slate-900/90 text-slate-100 text-xs px-2 py-2 rounded-full shadow-lg border border-slate-700 hover:bg-slate-800">
+                <span class="hidden sm:inline ml-1 mr-1">Navigation</span>
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-slate-900 font-bold text-xs">
+                    ≡
+                </span>
+            </button>
 
+            <div id="site-nav-panel"
+                 class="hidden mt-2 bg-slate-900/95 text-slate-100 text-xs rounded-xl shadow-xl border border-slate-700 px-2 py-2 w-52">
+                <button id="site-nav-close"
+                        class="w-full text-right text-[10px] text-slate-400 mb-1 hover:text-slate-200">
+                    ✕
+                </button>
+                <ul class="space-y-1">
+                    <li>
+                        <a href="index.html" data-page="index.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Cartographie MDE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="feuille-de-route-mde.html" data-page="feuille-de-route-mde.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Feuille de route MDE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="strategieMDE.html" data-page="strategieMDE.html"
+                           class="site-nav-link block px-2 py-1 rounded-lg hover:bg-slate-800">
+                            Stratégie MDE (slides)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- HEADER / Barre de contrôle -->
     <header class="flex items-center justify-between px-8 py-4 border-b border-slate-800 bg-slate-900/95 backdrop-blur">
         <div>
@@ -595,8 +634,58 @@
         updateSlide(0);
     });
 </script>
+<script>
+    (function () {
+        const toggle = document.getElementById('site-nav-toggle');
+        const panel = document.getElementById('site-nav-panel');
+        const closeBtn = document.getElementById('site-nav-close');
+
+        if (!toggle || !panel) return;
+
+        // ouverture / fermeture
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            panel.classList.toggle('hidden');
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                panel.classList.add('hidden');
+            });
+        }
+
+        // fermer si on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (panel.classList.contains('hidden')) return;
+            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+                panel.classList.add('hidden');
+            }
+        });
+
+        // surligner la page active dans le menu
+        const links = panel.querySelectorAll('.site-nav-link');
+        const path = window.location.pathname;
+
+        links.forEach((link) => {
+            const page = link.dataset.page;
+            if (!page) return;
+
+            const isIndex =
+                page === 'index.html' &&
+                (path.endsWith('/') || path.endsWith('/index.html') || path === '');
+
+            const isMatch = path.endsWith(page) || isIndex;
+
+            if (isMatch) {
+                link.classList.add('bg-slate-800', 'text-emerald-300', 'font-semibold');
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
+
 
 
