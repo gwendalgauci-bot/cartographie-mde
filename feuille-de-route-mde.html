@@ -94,36 +94,50 @@
 </head>
 <body>
 
-<!-- MENU DE NAVIGATION GLOBAL -->
-<header class="bg-slate-900 text-slate-100 shadow-md">
-    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-slate-900 font-bold text-sm">
-                MDE
-            </div>
-            <div>
-                <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Navigation MDE</p>
-                <p class="text-sm font-semibold text-slate-100">Carrefour France – Flux & Stratégie</p>
-            </div>
-        </div>
-        <nav class="flex items-center gap-2 text-xs sm:text-sm">
-            <a href="index.html"
-               class="px-3 py-1.5 rounded-full border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-100">
-                Cartographie MDE
-            </a>
-            <a href="feuille_route_mde.html"
-               class="px-3 py-1.5 rounded-full border border-emerald-500 bg-emerald-500/10 text-emerald-300 font-semibold">
-                Feuille de route Energy Manager
-            </a>
-            <a href="strategie_mde.html"
-               class="px-3 py-1.5 rounded-full border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-100">
-                Slides stratégie MDE
-            </a>
-        </nav>
-    </div>
-</header>
+<!-- MENU DE NAVIGATION FLOTTANT (même que les autres pages, avec les bons liens) -->
+<nav id="page-nav" class="fixed left-6 top-24 z-50">
+    <button id="nav-toggle"
+            class="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-slate-100 shadow-xl border border-emerald-500/60 hover:bg-slate-800 transition">
+        <span class="text-sm font-medium">Navigation</span>
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-slate-900 text-xs font-bold">
+            ☰
+        </span>
+    </button>
 
-<div class="infographic-container mt-6">
+    <div id="nav-panel"
+         class="mt-2 w-64 bg-slate-900 text-slate-100 rounded-2xl shadow-2xl border border-emerald-500/40 overflow-hidden hidden">
+        <div class="px-4 py-3 border-b border-slate-700/60 text-xs uppercase tracking-wide text-slate-400">
+            Pages MDE Carrefour
+        </div>
+        <ul class="text-sm">
+            <li>
+                <a href="index.html"
+                   class="flex items-center justify-between px-4 py-3 hover:bg-slate-800 transition">
+                    <span>Cartographie MDE (Flux & Outils)</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 border border-slate-600">N0–N3</span>
+                </a>
+            </li>
+            <li>
+                <a href="strategieMDE.html"
+                   class="flex items-center justify-between px-4 py-3 hover:bg-slate-800 transition">
+                    <span>Stratégie MDE (Slides dirigeants)</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 border border-slate-600">Présentation</span>
+                </a>
+            </li>
+            <li>
+                <a href="feuille-de-route-mde.html"
+                   class="flex items-center justify-between px-4 py-3 hover:bg-slate-800 transition">
+                    <span>Feuille de route Energy Manager</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/60 text-emerald-300">
+                        2026–2028
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="infographic-container">
     <!-- TÊTE D’AFFICHE -->
     <header class="mb-8 p-4 rounded-xl bg-blue-50/70 border-b-4 border-blue-900">
         <h1 class="text-3xl font-extrabold text-[#0b3d91] mb-1">
@@ -437,6 +451,14 @@
 <script>
     // Initialisation des icônes Lucide
     lucide.createIcons();
+
+    // Toggle du menu de navigation
+    const navToggle = document.getElementById('nav-toggle');
+    const navPanel  = document.getElementById('nav-panel');
+
+    navToggle.addEventListener('click', () => {
+        navPanel.classList.toggle('hidden');
+    });
 </script>
 
 </body>
