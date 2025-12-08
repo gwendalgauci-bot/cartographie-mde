@@ -526,27 +526,27 @@
     const fullscreenBtn = document.getElementById('fullscreen-btn');
     const deck = document.getElementById('deck');
 
-    let currentSlide = 0;
+    // -1 au départ = aucune slide encore gérée par le script
+    let currentSlide = -1;
 
     function updateSlide(index) {
         if (index < 0 || index >= slides.length) return;
 
-        // Masquer la slide actuelle
-        if (slides[currentSlide]) {
+        // Masquer l'ancienne slide uniquement s'il y en a une
+        if (currentSlide !== -1) {
             slides[currentSlide].classList.remove('slide-active');
-            setTimeout(() => {
-                slides[currentSlide].style.display = 'none';
-            }, 200);
+            slides[currentSlide].style.display = 'none';
         }
 
         currentSlide = index;
 
         // Afficher la nouvelle slide
-        slides[currentSlide].style.display = 'flex';
-        void slides[currentSlide].offsetHeight; // reflow
-        slides[currentSlide].classList.add('slide-active');
+        const slide = slides[currentSlide];
+        slide.style.display = 'flex';
+        void slide.offsetHeight; // reflow pour la transition
+        slide.classList.add('slide-active');
 
-        // Mise à jour UI
+        // Mise à jour du compteur + boutons
         counterEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
         prevBtn.disabled = currentSlide === 0;
         nextBtn.disabled = currentSlide === slides.length - 1;
@@ -554,16 +554,12 @@
 
     nextBtn.addEventListener('click', () => {
         const nextIndex = currentSlide + 1;
-        if (nextIndex < slides.length) {
-            updateSlide(nextIndex);
-        }
+        if (nextIndex < slides.length) updateSlide(nextIndex);
     });
 
     prevBtn.addEventListener('click', () => {
         const prevIndex = currentSlide - 1;
-        if (prevIndex >= 0) {
-            updateSlide(prevIndex);
-        }
+        if (prevIndex >= 0) updateSlide(prevIndex);
     });
 
     document.addEventListener('keydown', (e) => {
@@ -593,9 +589,12 @@
         }
     });
 
-    // Initialisation
-    updateSlide(0);
+    // Initialisation après chargement
+    window.addEventListener('load', () => {
+        updateSlide(0);
+    });
 </script>
 
 </body>
 </html>
+
