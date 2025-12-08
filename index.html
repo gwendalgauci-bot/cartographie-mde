@@ -541,4 +541,124 @@
                 <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-action)]">
                     <h5 class="text-xl font-bold text-[var(--color-action)] mb-3">Scénario 2 : SAVEE central (impact technique limité)</h5>
                     <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
-                        <li><strong>Advizeo/SA
+                        <li><strong>Advizeo/SAVEE</strong> est l’outil central pour le suivi MDE, la planification des actions et le M&V.</li>
+                        <li><strong>Sensinov, Grafana et Eficia</strong> poussent leurs dérives, tickets et pushmails vers SAVEE via API ou interface standardisée.</li>
+                        <li><strong>Avantage :</strong> consolidation maximale, alignement sur l’outil IPMVP déjà existant, bonne cohérence avec la boucle hebdomadaire.</li>
+                    </ul>
+                </div>
+
+                <!-- Scénario 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-[var(--color-target)]">
+                    <h5 class="text-xl font-bold text-[var(--color-target)] mb-3">Scénario 3 : outil interne dédié</h5>
+                    <ul class="text-sm space-y-2 list-disc list-inside text-slate-700">
+                        <li>Développement d’un outil interne unique (par exemple un Energy Board dans Qlik) qui agrège toutes les actions MDE et travaux.</li>
+                        <li>Intégrations API avec Sensinov, Grafana, Eficia, Advizeo et éventuellement BeeBryte.</li>
+                        <li><strong>Avantage :</strong> contrôle complet sur la donnée, les UES et les règles de déclenchement, au prix d’un investissement IT plus élevé.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SYNTHÈSE DES DIFFÉRENCES -->
+        <div class="mt-20">
+            <h4 class="text-3xl font-bold text-slate-800 mb-6 text-center border-b-2 border-slate-200 inline-block mx-auto pb-1">Synthèse : écarts structuraux Hyper vs Market</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-slate-100 rounded-xl shadow-inner">
+
+                <div class="p-4 bg-white rounded-lg shadow border-l-4 card-hyper">
+                    <h5 class="text-xl font-bold text-[var(--color-hyper)] mb-3 flex items-center">
+                        <span class="mr-2">🏪</span> Hypermarchés (Hyper)
+                    </h5>
+                    <ul class="text-sm space-y-3 text-slate-700">
+                        <li><strong>Pilotage MDE :</strong> pilotage fortement <span class="font-semibold">localisé</span>, exécuté par le CMM et l’équipe technique, avec appui du manager régional et des mainteneurs CVC / frigoristes.</li>
+                        <li><strong>Outils de détection (N2) :</strong> multiples sources (Sensinov, Grafana, rapports Advizeo, pushmails). L’analyse est plus manuelle et demande une forte implication interne pour relier dérives et actions.</li>
+                        <li><strong>Froid :</strong> optimisation spécifique BeeBryte sur certains sites, en plus de la GTB CVC/Éclairage.</li>
+                        <li><strong>Tracé :</strong> traçabilité plus fragmentée, dépendante de la discipline locale et du temps disponible côté CMM.</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-white rounded-lg shadow border-l-4 card-market">
+                    <h5 class="text-xl font-bold text-[var(--color-market)] mb-3 flex items-center">
+                        <span class="mr-2">🛒</span> Markets (Market)
+                    </h5>
+                    <ul class="text-sm space-y-3 text-slate-700">
+                        <li><strong>Pilotage MDE :</strong> pilotage plus <span class="font-semibold">centralisé</span> via l’Energy Center Eficia qui génère des tickets et pushmails vers le N1. Autonomie MDE limitée sur site.</li>
+                        <li><strong>Outils de détection (N2) :</strong> plateforme Eficia unique (Energy Center + Dataviz). La détection des dérives est plus automatisée et se traduit directement par des tickets d’action.</li>
+                        <li><strong>Froid/CVC :</strong> gestion intégrée à la GTB Eficia (programmes, consignes, comptage) et aux mainteneurs CVC / frigoristes.</li>
+                        <li><strong>Tracé :</strong> chaîne plus directe entre dérive détectée, ticket et action, avant passage éventuel par Advizeo/SAVEE.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="bg-slate-900 text-white text-center py-6 mt-12">
+    <p class="text-sm">Infographie Maîtrise de l'Énergie (MDE) - Mise à jour 2025</p>
+</footer>
+
+<script>
+    // Ajout d'une simple fonction de bascule pour les détails si besoin
+    function toggleDetails(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.classList.toggle('hidden');
+        }
+    }
+
+    window.onload = function () {
+        // Le code Chart.js pourrait être ajouté ici si des graphiques étaient nécessaires.
+    };
+</script>
+<script>
+    (function () {
+        const toggle = document.getElementById('site-nav-toggle');
+        const panel = document.getElementById('site-nav-panel');
+        const closeBtn = document.getElementById('site-nav-close');
+
+        if (!toggle || !panel) return;
+
+        // ouverture / fermeture
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            panel.classList.toggle('hidden');
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                panel.classList.add('hidden');
+            });
+        }
+
+        // fermer si on clique en dehors
+        document.addEventListener('click', (e) => {
+            if (panel.classList.contains('hidden')) return;
+            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+                panel.classList.add('hidden');
+            }
+        });
+
+        // surligner la page active dans le menu
+        const links = panel.querySelectorAll('.site-nav-link');
+        const path = window.location.pathname;
+
+        links.forEach((link) => {
+            const page = link.dataset.page;
+            if (!page) return;
+
+            const isIndex =
+                page === 'index.html' &&
+                (path.endsWith('/') || path.endsWith('/index.html') || path === '');
+
+            const isMatch = path.endsWith(page) || isIndex;
+
+            if (isMatch) {
+                link.classList.add('bg-slate-800', 'text-emerald-300', 'font-semibold');
+            }
+        });
+    })();
+</script>
+</body>
+</html>
