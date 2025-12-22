@@ -817,42 +817,54 @@
         });
     });
 
-    fullscreenBtn.addEventListener('click', async () => {
-        if (!document.fullscreenElement) {
-            try {
-                await deck.requestFullscreen();
-                fullscreenBtn.querySelector('span').textContent = 'Quitter le plein écran';
-                const icon = fullscreenBtn.querySelector('i[data-lucide]');
-                if (icon) icon.setAttribute('data-lucide', 'minimize-2');
-                if (window.lucide) lucide.createIcons();
-            } catch (e) {
-                console.error('Erreur plein écran :', e);
-            }
-        } else {
-            await document.exitFullscreen();
-            fullscreenBtn.querySelector('span').textContent = 'Plein écran';
-            const icon = fullscreenBtn.querySelector('i[data-lucide]');
-            if (icon) icon.setAttribute('data-lucide', 'maximize-2');
-            if (window.lucide) lucide.createIcons();
-        }
-    });
+    fullscreenBtn.addEventListener('click', async () => {<script>
+  // ... ton JS existant au-dessus ...
 
-    window.addEventListener('load', () => {
-        slides.forEach((s, i) => {
-            if (i === 0) {
-                s.style.display = 'flex';
-                s.classList.add('slide-active');
-            } else {
-                s.style.display = 'none';
-                s.classList.remove('slide-active');
-            }
-        });
-        updateSlide(0);
-        if (window.lucide) {
-            lucide.createIcons();
-        }
+  function setFullscreenUI(isFs) {
+    document.body.classList.toggle('is-fullscreen', isFs);
+
+    // Met à jour le bouton (quand le header est visible)
+    if (!fullscreenBtn) return;
+
+    const label = fullscreenBtn.querySelector('span');
+    const icon = fullscreenBtn.querySelector('i[data-lucide]');
+
+    if (isFs) {
+      if (label) label.textContent = 'Quitter le plein écran';
+      if (icon) icon.setAttribute('data-lucide', 'minimize-2');
+    } else {
+      if (label) label.textContent = 'Plein écran';
+      if (icon) icon.setAttribute('data-lucide', 'maximize-2');
+    }
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // IMPORTANT : gère aussi la sortie via la touche Échap
+  document.addEventListener('fullscreenchange', () => {
+    setFullscreenUI(!!document.fullscreenElement);
+  });
+
+  fullscreenBtn.addEventListener('click', async () => {
+    try {
+      if (!document.fullscreenElement) {
+        // Plein écran sur le deck
+        await deck.requestFullscreen();
+        // setFullscreenUI sera appelé par fullscreenchange
+      } else {
+        await document.exitFullscreen();
+        // setFullscreenUI sera appelé par fullscreenchange
+      }
+    } catch (e) {
+      console.error('Erreur plein écran :', e);
+    }
+  });
+
+  // ... le reste de ton JS (load, navigation, etc.) ...
+</script>
+}
     });
 </script>
 
 </body>
 </html>
+
