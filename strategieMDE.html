@@ -66,6 +66,26 @@
             color: #020617;
             font-weight: 700;
         }
+
+        /* ---- MODE PLEIN ÉCRAN : ne garder que la présentation ---- */
+        body.is-fullscreen header,
+        body.is-fullscreen footer,
+        body.is-fullscreen #site-nav-toggle,
+        body.is-fullscreen #site-nav-panel {
+            display: none !important;
+        }
+        body.is-fullscreen main {
+            padding: 0 !important;
+        }
+        body.is-fullscreen main > div {
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: none !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 1.5rem !important;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100">
@@ -125,7 +145,7 @@
                     Stratégie MDE Carrefour France
                 </h1>
                 <p class="text-xs md:text-sm text-slate-400">
-                    Décret tertiaire & ISO 50001 — centralisation, traçabilité, visibilité macro/micro
+                    Décret tertiaire & ISO 50001 — pilotage opérationnel, traçabilité, gains mesurés
                 </p>
             </div>
         </div>
@@ -171,20 +191,21 @@
                         <i data-lucide="shield-check" class="w-4 h-4"></i>
                         Décret tertiaire & ISO 50001
                     </p>
+
                     <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-8 drop-shadow-lg">
                         Stratégie MDE&nbsp;:<br>
-                        <span class="text-emerald-400">centraliser pour piloter et prouver</span>
+                        <span class="text-emerald-400">passer du constat au pilotage</span>
                     </h2>
 
                     <div class="bg-slate-800/70 p-6 rounded-xl border-l-4 border-emerald-500 shadow-inner">
                         <p class="text-base md:text-lg text-slate-200 mb-3 flex items-center gap-2">
                             <i data-lucide="target" class="w-5 h-5 text-emerald-400"></i>
-                            <span class="font-semibold text-emerald-200">Objectif de cette revue :</span>
+                            <span class="font-semibold text-emerald-200">Décision attendue :</span>
                         </p>
                         <ul class="list-disc list-inside text-sm md:text-base text-slate-200 space-y-2 ml-4">
-                            <li>Clarifier le diagnostic : fragmentation, traçabilité insuffisante, visibilité macro limitée.</li>
-                            <li>Poser la cible : <span class="font-semibold text-white">RUA</span> + visibilité <span class="font-semibold text-white">macro & micro</span> + boucle « dérive → action → preuve ».</li>
-                            <li>Arbitrer une trajectoire : <span class="font-semibold text-white">SAVEE pivot (2026)</span> → <span class="font-semibold text-white">Qlik cible long terme</span>.</li>
+                            <li>Valider une trajectoire outillage/organisation (arbitrage de scénario).</li>
+                            <li>Installer un pilotage opérationnel : <span class="font-semibold text-white">détection → action → preuve → gain mesuré</span>.</li>
+                            <li>Choix recommandé : <span class="font-semibold text-white">SAVEE pivot 2026</span> (RUA + dashboards) → <span class="font-semibold text-white">Qlik cible long terme</span>.</li>
                         </ul>
                     </div>
 
@@ -195,52 +216,55 @@
                 </div>
             </section>
 
-            <!-- SLIDE 2 – Fragmentation -->
+            <!-- SLIDE 2 – Périmètre & cadrage -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-sky-400 mb-2 uppercase flex items-center gap-2">
-                    <i data-lucide="layers" class="w-4 h-4"></i>
-                    Partie 1 / État de l'art MDE
+                    <i data-lucide="scan" class="w-4 h-4"></i>
+                    Partie 1 / Périmètre & cadrage
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white flex items-center gap-3">
-                    <i data-lucide="split" class="w-8 h-8 text-sky-400"></i>
-                    Un système outillé, mais difficile à consolider
+                    <i data-lucide="frame" class="w-8 h-8 text-sky-400"></i>
+                    Cadrer pour comparer et prouver
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
-                    <div class="info-card">
+                    <div class="info-card border-l-4 border-indigo-500">
                         <div class="flex items-center mb-3">
-                            <i data-lucide="database" class="icon text-sky-400"></i>
-                            <p class="font-bold text-lg md:text-xl text-sky-300">Référentiels multiples</p>
+                            <i data-lucide="equal" class="icon text-indigo-300"></i>
+                            <p class="font-bold text-lg md:text-xl text-indigo-200">ISO 50001 : correction par usages</p>
                         </div>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Hypers : Sensinov (GTB/supervision), Grafana, BeeBryte, livrables divers.</li>
-                            <li>Markets : Eficia (Energy Center), tickets et vues centralisées.</li>
-                            <li>Transverse : SAVEE, Qlik, fichiers locaux, comptes rendus.</li>
+                            <li>Formaliser la correction par usages : <span class="font-semibold text-white">variables pertinentes</span> + <span class="font-semibold text-white">facteurs statiques</span>.</li>
+                            <li>Objectif : comparaisons robustes, gains crédibles, preuves auditables.</li>
+                            <li>Résultat attendu : des EnPI stables dans le temps, compréhensibles par la direction et le terrain.</li>
                         </ul>
                     </div>
 
-                    <div class="info-card">
+                    <div class="info-card border-l-4 border-emerald-500">
                         <div class="flex items-center mb-3">
-                            <i data-lucide="triangle-alert" class="icon text-amber-400"></i>
-                            <p class="font-bold text-lg md:text-xl text-amber-300">Conséquence réelle</p>
+                            <i data-lucide="cpu" class="icon text-emerald-300"></i>
+                            <p class="font-bold text-lg md:text-xl text-emerald-200">Périmètre technique couvert</p>
                         </div>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Actions MDE dispersées : difficile de dire <span class="font-semibold text-white">qui fait quoi, quand, et avec quelle preuve</span>.</li>
-                            <li>Lecture nationale reconstruite à la main : visibilité macro fragile.</li>
-                            <li>Traçabilité ISO et maîtrise Décret tertiaire : dépend trop d’efforts ponctuels.</li>
+                            <li>Froid (centrales), CVC/CTA, GTB.</li>
+                            <li>Éclairage : <span class="font-semibold text-white">horaires + dérives</span>.</li>
+                            <li>Fours : suivi et dérives sur profils de charge.</li>
+                            <li>Dérives transverses : surconsommations, dérives d’exploitation, anomalies récurrentes.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 3 – ISO / Décret : exigence de pilotage (sans chiffres OPERAT) -->
+            <!-- SLIDE 3 – ISO / Décret : exigence de pilotage -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-sky-400 mb-2 uppercase flex items-center gap-2">
                     <i data-lucide="scale" class="w-4 h-4"></i>
                     Partie 1 / Exigences de pilotage
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Deux cadres, une même exigence : exécuter et prouver
+                    Deux cadres, une même exigence : exécuter et prouver (avec un gain)
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
@@ -250,9 +274,9 @@
                             ISO 50001 (SMÉ)
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Mettre en cohérence : objectifs, actions, responsables, preuves.</li>
-                            <li>Pouvoir démontrer l’efficacité : “action réalisée” ≠ “action prouvée”.</li>
-                            <li>Stabiliser un pilotage reproductible (pas dépendant des personnes).</li>
+                            <li>Action traçable : responsable, échéance, preuve de clôture.</li>
+                            <li>Mesure : gains robustes via correction par usages (variables/facteurs).</li>
+                            <li>Standard : éviter le pilotage “au cas par cas” dépendant des personnes.</li>
                         </ul>
                     </div>
 
@@ -262,48 +286,71 @@
                             Décret tertiaire (trajectoire)
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Maîtriser la trajectoire via l’exécution : dérives → correction → vérification.</li>
-                            <li>Tracer les actions structurantes et leurs effets dans le temps.</li>
-                            <li>Réduire les écarts par pilotage continu, pas en bilan a posteriori.</li>
+                            <li>Maîtriser les dérives : pilotage continu, pas uniquement bilan annuel.</li>
+                            <li>Traçabilité des actions structurantes et de leurs effets.</li>
+                            <li>Feuille de route outillée et datée : données, surfaces, catégories, ACI PV, LG.</li>
                         </ul>
                     </div>
                 </div>
 
                 <p class="mt-4 text-xs text-slate-400">
-                    Point clé : un pilotage crédible repose sur une traçabilité unifiée, pas sur des vues isolées par outil.
+                    Message clé : une dérive n’est utile que si elle déclenche une action, une preuve, et un gain mesuré.
                 </p>
             </section>
 
-            <!-- SLIDE 4 – Freins (réécrit : plus macro/micro, moins exemples) -->
+            <!-- SLIDE 4 – Terrain : typologies & équipements -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-sky-400 mb-2 uppercase flex items-center gap-2">
-                    <i data-lucide="badge-alert" class="w-4 h-4"></i>
-                    Partie 1 / Enjeux terrain
+                    <i data-lucide="map" class="w-4 h-4"></i>
+                    Partie 1 / Terrain : où sont les problèmes
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Ce qui nous freine aujourd’hui
+                    Décrire les dérives par typologies (pas par anecdotes)
                 </h2>
 
-                <ul class="list-disc list-inside text-sm md:text-lg space-y-4 text-slate-200 ml-6 w-full md:w-3/4">
-                    <li><span class="font-semibold text-red-400">Réactivité hétérogène :</span> priorisation variable, traitement non homogène des dérives.</li>
-                    <li><span class="font-semibold text-red-400">Traçabilité insuffisante :</span> actions, vérifications et preuves trop souvent dispersées.</li>
-                    <li><span class="font-semibold text-red-400">Visibilité macro fragile :</span> difficile de savoir où ça dérive, où ça bloque, et ce qui est réellement clos.</li>
-                    <li><span class="font-semibold text-red-400">Pilotage managérial limité :</span> backlog, retards, responsables, délais = peu consolidés.</li>
-                </ul>
+                <div class="grid md:grid-cols-2 gap-6 w-full">
+                    <div class="info-card border-l-4 border-amber-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-amber-300 flex items-center gap-2">
+                            <i data-lucide="shapes" class="w-5 h-5"></i>
+                            Typologies à structurer
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
+                            <li>Hyper vs Market vs LG (logiques d’exploitation différentes).</li>
+                            <li>Neuf vs ancien (maturité équipements/GTB).</li>
+                            <li>Zones climatiques (sensibilité CVC/froid).</li>
+                            <li>Ex-enseignes (si pertinent) : cohérence technique et habitudes d’exploitation.</li>
+                        </ul>
+                    </div>
 
-                <p class="mt-6 text-xs text-slate-400">
-                    Objectif : rendre la chaîne « dérive → action → preuve » standard, visible et pilotable (macro & micro).
+                    <div class="info-card border-l-4 border-sky-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-sky-300 flex items-center gap-2">
+                            <i data-lucide="boxes" class="w-5 h-5"></i>
+                            Équipements / signaux clés
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
+                            <li>Froid : paramètres, consignes, dérives à risque, cohérence exploitation.</li>
+                            <li>CTA / CVC : consignes, horaires, overrides, cohérence usage réel.</li>
+                            <li>Éclairage : horaires d’allumage/extinction et dérives récurrentes.</li>
+                            <li>Fours : dérives visibles sur profils de charge / horaires / exploitation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-xs text-slate-400">
+                    Attendu : “sur telle typologie, on observe surtout telles dérives”, pour prioriser et industrialiser.
                 </p>
             </section>
 
-            <!-- SLIDE 5 – Vision cible (ajout macro/micro) -->
+            <!-- SLIDE 5 – Vision cible -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-emerald-400 mb-2 uppercase flex items-center gap-2">
                     <i data-lucide="sparkles" class="w-4 h-4"></i>
                     Partie 2 / Cible et principes
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Vision : un système piloté, traçable, démontrable
+                    Vision : une chaîne standard « dérive → action → preuve → gain »
                 </h2>
 
                 <div class="flex items-center mb-4">
@@ -314,26 +361,27 @@
                 </div>
 
                 <ul class="list-disc list-inside text-sm md:text-lg space-y-4 text-slate-200 ml-6">
-                    <li><span class="font-bold text-white">RUA :</span> un référentiel unique d’actions MDE (toutes sources, tous formats, tous prestataires).</li>
-                    <li><span class="font-bold text-white">Visibilité macro & micro :</span> direction (priorités/risques), management (backlog/retards/délais), opérationnel (action par action).</li>
-                    <li><span class="font-bold text-white">Pilotage par UES :</span> consolider l’amélioration (pas seulement la consommation brute).</li>
+                    <li><span class="font-bold text-white">RUA :</span> Référentiel Unique d’Action (source de vérité) : création, mise à jour, clôture, preuve.</li>
+                    <li><span class="font-bold text-white">Visibilité macro & micro :</span> direction (priorités/risques), management (backlog/SLA), opérationnel (action par action).</li>
+                    <li><span class="font-bold text-white">Mesure robuste :</span> gains en kWh/m² avec logique IPMVP (référence, période, ajustements).</li>
                 </ul>
 
                 <div class="mt-6 bg-slate-800/60 p-4 rounded-xl border border-slate-700">
                     <p class="text-sm text-slate-200">
-                        <span class="font-semibold text-emerald-300">Fil rouge :</span> standardiser « dérive → ticket → correction → vérification → clôture → preuve ».
+                        <span class="font-semibold text-emerald-300">Fil rouge :</span> standardiser les routines de contrôle + correction, et les rendre traçables.
                     </p>
                 </div>
             </section>
 
-            <!-- SLIDE 6 – RUA (renforcé : macro/micro + champs) -->
+            <!-- SLIDE 6 – RUA -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-emerald-400 mb-2 uppercase flex items-center gap-2">
                     <i data-lucide="clipboard-list" class="w-4 h-4"></i>
-                    Partie 2 / Le référentiel d’actions
+                    Partie 2 / Référentiel d’actions
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    RUA : traçabilité totale, pilotage macro & micro
+                    RUA : automatisé, complet, pilotable (macro & micro)
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
@@ -343,139 +391,152 @@
                             Champs minimum par action
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">Origine :</span> alerte / dérive / audit / projet.</li>
-                            <li><span class="font-medium">Contexte :</span> format (Hyper/Market/LG), UES, équipement/lot.</li>
-                            <li><span class="font-medium">Pilotage :</span> responsable, échéance, statut, priorité.</li>
-                            <li><span class="font-medium">Clôture :</span> vérification + preuve + commentaire.</li>
+                            <li><span class="font-medium">Origine :</span> alerte / dérive / audit / routine / projet.</li>
+                            <li><span class="font-medium">Contexte :</span> typologie (hyper/market/LG), UES, équipement, site.</li>
+                            <li><span class="font-medium">Pilotage :</span> criticité, responsable, échéance, statut, preuve attendue.</li>
+                            <li><span class="font-medium">Clôture :</span> vérification, preuve, commentaire, lien vers la mesure.</li>
                         </ul>
                     </div>
 
                     <div class="info-card border-l-4 border-emerald-400">
                         <p class="font-bold text-lg md:text-xl mb-3 text-emerald-300 flex items-center gap-2">
-                            <i data-lucide="eye" class="w-5 h-5"></i>
-                            Ce que ça rend visible
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                            Règles non négociables
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">Macro direction :</span> priorités, risques, tendances de dérives.</li>
-                            <li><span class="font-medium">Macro management :</span> backlog, retards, respect des délais, escalades.</li>
-                            <li><span class="font-medium">Micro :</span> action par action, du ticket à la preuve (ISO).</li>
-                            <li><span class="font-medium">Preuve :</span> consolidation sans recoller à la main.</li>
+                            <li>Une dérive produit une action traçable (sinon, elle n’existe pas).</li>
+                            <li>Un responsable est <span class="font-semibold text-white">désigné et affiché</span> (sinon les délais ne tiennent pas).</li>
+                            <li>Clôture = preuve + vérification + lien vers la baisse mesurée (même si incertitude cadrée).</li>
+                            <li>Si des outils restent distincts : interface verrouillée (définitions, règles de calcul, référentiel d’actions).</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 7 – Pilotage UES (sans "éclairage") -->
+            <!-- SLIDE 7 – UES / IPMVP -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-emerald-400 mb-2 uppercase flex items-center gap-2">
                     <i data-lucide="activity" class="w-4 h-4"></i>
-                    Partie 2 / Le moteur de mesure
+                    Partie 2 / Mesure & gains
                 </p>
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Passer du global au pilotage par UES (preuve + arbitrage)
-                </h2>
 
-                <ul class="list-disc list-inside text-sm md:text-lg space-y-4 text-slate-200 ml-6 w-full md:w-3/4">
-                    <li><span class="font-bold text-white">Référentiel national UES :</span> standardiser la lecture (froid, CVC/CTA, process, eau…).</li>
-                    <li><span class="font-bold text-white">KPI UES (EnPI) :</span> distinguer “où ça dérive” et “où ça progresse” (utile direction + utile terrain).</li>
-                    <li><span class="font-bold text-white">M&V global maintenu :</span> conserver la mesure site tout en rendant les actions explicables par UES.</li>
-                    <li><span class="font-bold text-white">Lien direct avec le RUA :</span> chaque action structurante est rattachée à une UES et à une preuve.</li>
-                </ul>
-            </section>
-
-            <!-- SLIDE 8 – Standard d’exploitation : consignes + engagements de délai (nouvelle) -->
-            <section class="slide">
-                <p class="text-xs md:text-sm font-semibold text-emerald-400 mb-2 uppercase flex items-center gap-2">
-                    <i data-lucide="clock-3" class="w-4 h-4"></i>
-                    Partie 2 / Standard d’exploitation
-                </p>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Consignes : pilotage hebdo + engagements de délai
+                    UES + IPMVP : relier l’action à une baisse mesurée
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
-                    <div class="info-card border-l-4 border-emerald-400">
-                        <p class="font-bold text-lg md:text-xl mb-3 text-emerald-300 flex items-center gap-2">
-                            <i data-lucide="settings-2" class="w-5 h-5"></i>
-                            Ce qu’on standardise
+                    <div class="info-card border-l-4 border-indigo-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-indigo-300 flex items-center gap-2">
+                            <i data-lucide="sliders" class="w-5 h-5"></i>
+                            Correction par usages (ISO 50001:2018)
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">Consignes :</span> horaires, températures, modes, overrides.</li>
-                            <li><span class="font-medium">Rythme :</span> revue hebdomadaire (détection → action → vérification).</li>
-                            <li><span class="font-medium">Périmètre :</span> rooftops, CTA, chaufferies, centrales froid (équipements critiques).</li>
-                            <li><span class="font-medium">Règle :</span> même boucle pour toutes les actions, quel que soit le contexte.</li>
+                            <li>Formaliser : variables pertinentes (activité, météo, horaires, etc.).</li>
+                            <li>Encadrer : facteurs statiques (surface, équipement, périmètre constant).</li>
+                            <li>Objectif : des comparaisons robustes et des gains défendables.</li>
                         </ul>
                     </div>
 
-                    <div class="info-card border-l-4 border-sky-400">
-                        <p class="font-bold text-lg md:text-xl mb-3 text-sky-300 flex items-center gap-2">
-                            <i data-lucide="timer" class="w-5 h-5"></i>
-                            Engagements de délai
+                    <div class="info-card border-l-4 border-emerald-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-emerald-300 flex items-center gap-2">
+                            <i data-lucide="line-chart" class="w-5 h-5"></i>
+                            Gain attendu (kWh/m²) – logique IPMVP
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">Critique :</span> correction &lt; 72 h</li>
-                            <li><span class="font-medium">Majeur :</span> correction &lt; 7 jours</li>
-                            <li><span class="font-medium">Mineur :</span> correction &lt; 30 jours</li>
-                            <li><span class="font-medium">Traçabilité :</span> ticket + vérification + preuve dans le RUA</li>
+                            <li>Référence + période + ajustements : transparence de la méthode.</li>
+                            <li>Minimum : être capable de relier <span class="font-semibold text-white">action → baisse mesurée</span>.</li>
+                            <li>Incertitude acceptable si elle est cadrée et constante.</li>
                         </ul>
                     </div>
                 </div>
 
                 <p class="mt-4 text-xs text-slate-400">
-                    Remarque : interventions de nuit / travaux = même règle de traçabilité, pas un traitement à part.
+                    Résultat attendu : des KPI stables et partagés, utiles au pilotage (pas seulement au reporting).
                 </p>
             </section>
 
-            <!-- SLIDE 9 – Synergie prestataires 2026 (nouvelle) -->
+            <!-- SLIDE 8 – Routines + criticité/SLA -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-emerald-400 mb-2 uppercase flex items-center gap-2">
-                    <i data-lucide="network" class="w-4 h-4"></i>
-                    Partie 2 / 2026 : année de calibration
+                    <i data-lucide="repeat" class="w-4 h-4"></i>
+                    Partie 2 / Routines de dérives & SLA
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Synergie EFICIA / SENSINOV / SAVEE : fin des silos
+                    Une dérive = une routine de contrôle + correction (avec délais)
                 </h2>
 
-                <div class="grid md:grid-cols-3 gap-6 w-full">
-                    <div class="info-card border-t-4 border-sky-500">
-                        <p class="font-extrabold text-lg text-sky-300 mb-2 flex items-center gap-2">
-                            <i data-lucide="ticket" class="w-5 h-5"></i> EFICIA
+                <div class="grid md:grid-cols-2 gap-6 w-full">
+                    <div class="info-card border-l-4 border-sky-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-sky-300 flex items-center gap-2">
+                            <i data-lucide="check-check" class="w-5 h-5"></i>
+                            Exemples de routines standardisées
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Ticketing : traçabilité bout en bout.</li>
-                            <li>Alerting : priorisation orientée consignes.</li>
-                            <li>Sous-comptage : vision claire du déploiement.</li>
+                            <li><span class="font-medium">Pass froid</span> (référence) : trimestriel, vérif paramètres de toutes les centrales.</li>
+                            <li><span class="font-medium">Éclairage</span> : contrôle périodique des horaires et cohérence exploitation réelle.</li>
+                            <li><span class="font-medium">Consignes températures</span> (froid/CVC) : consignes, écarts, overrides, cohérence usage.</li>
+                            <li><span class="font-medium">Surconsommations</span> : détection → qualification → action sur signaux de dérive.</li>
                         </ul>
                     </div>
 
-                    <div class="info-card border-t-4 border-indigo-500">
-                        <p class="font-extrabold text-lg text-indigo-300 mb-2 flex items-center gap-2">
-                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i> SENSINOV
+                    <div class="info-card border-l-4 border-amber-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-amber-300 flex items-center gap-2">
+                            <i data-lucide="timer" class="w-5 h-5"></i>
+                            Criticité & délais (SLA)
                         </p>
-                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Grafana : vues macro lisibles.</li>
-                            <li>Alerting : dérives d’exploitation (consignes).</li>
-                            <li>Lisibilité : standard vs spécifique.</li>
+                        <ul class="list-disc list-inside space-y-3 text-slate-200 ml-4 text-xs md:text-sm">
+                            <li><span class="font-semibold text-white">Critique (24 h)</span> : dérive froid à risque, sécurité produit, continuité.</li>
+                            <li><span class="font-semibold text-white">Majeure (3 jours)</span> : horaires éclairage récurrents, consigne CVC significative, dérive fours visible.</li>
+                            <li><span class="font-semibold text-white">Mineure / optimisation (2 semaines)</span> : réglage fin, paramétrage, écarts faibles mais répétés.</li>
                         </ul>
-                    </div>
-
-                    <div class="info-card border-t-4 border-emerald-500">
-                        <p class="font-extrabold text-lg text-emerald-300 mb-2 flex items-center gap-2">
-                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i> SAVEE
+                        <p class="mt-3 text-[11px] text-slate-400">
+                            Responsable variable (CMM / prestataire / exploitation) mais <span class="font-semibold text-slate-200">obligatoirement désigné</span> dans le RUA.
                         </p>
-                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Lisibilité plateforme & dashboards macro.</li>
-                            <li>RUA : centralisation plans d’action.</li>
-                            <li>Usage commun : DTF / régions / prestataires.</li>
-                        </ul>
                     </div>
                 </div>
 
-                <div class="mt-6 bg-slate-800/60 p-4 rounded-xl border border-slate-700">
-                    <p class="text-sm text-slate-200">
-                        <span class="font-semibold text-emerald-300">Exigences communes :</span>
-                        transparence, interopérabilité, traçabilité bout en bout, respect des délais.
-                    </p>
+                <p class="mt-4 text-xs text-slate-400">
+                    Traçabilité : chaque routine doit produire une action (qui/quoi/quand), une preuve, une clôture, et un lien vers la mesure.
+                </p>
+            </section>
+
+            <!-- SLIDE 9 – Synergies = pilotage par la donnée -->
+            <section class="slide">
+                <p class="text-xs md:text-sm font-semibold text-emerald-400 mb-2 uppercase flex items-center gap-2">
+                    <i data-lucide="network" class="w-4 h-4"></i>
+                    Partie 2 / Synergies & livrables
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
+                    Fin des silos = résultats concrets et mesurables
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-6 w-full">
+                    <div class="info-card border-l-4 border-emerald-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-emerald-300 flex items-center gap-2">
+                            <i data-lucide="bar-chart-4" class="w-5 h-5"></i>
+                            Ce que “synergie” veut dire
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
+                            <li><span class="font-medium">KPI partagés</span> (stables dans le temps) : dérives, délais, clôtures, gains.</li>
+                            <li><span class="font-medium">Données exploitables</span> : qualité, périmètre, définitions, règles de calcul.</li>
+                            <li><span class="font-medium">Priorisation</span> : où on met l’énergie, pourquoi, et quel impact attendu.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card border-l-4 border-sky-400">
+                        <p class="font-bold text-lg md:text-xl mb-3 text-sky-300 flex items-center gap-2">
+                            <i data-lucide="git-merge" class="w-5 h-5"></i>
+                            Si les outils restent distincts
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
+                            <li>On l’assume, mais on verrouille l’interface :</li>
+                            <li>Mêmes définitions, mêmes règles de calcul, mêmes statuts, même RUA.</li>
+                            <li>Capacité de consolider macro (direction/management) sans reconstruction manuelle.</li>
+                            <li>Traduction cible : <span class="font-semibold text-white">baisse de la récurrence des dérives</span> + amélioration kWh/m² (IPMVP) sur typologies prioritaires.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
@@ -497,21 +558,21 @@
                         <p class="font-extrabold text-xl md:text-2xl text-emerald-400 mb-2">Scénario 1</p>
                         <p class="font-semibold text-base md:text-lg text-white mb-1">SAVEE au centre</p>
                         <p class="text-xs md:text-sm text-slate-300">
-                            SAVEE devient le pivot du RUA et de la preuve. Les outils terrain alimentent.
+                            RUA + preuves + pilotage macro. Les outils terrain alimentent.
                         </p>
                     </div>
                     <div class="info-card border-t-4 border-sky-500">
                         <p class="font-extrabold text-xl md:text-2xl text-sky-400 mb-2">Scénario 2</p>
                         <p class="font-semibold text-base md:text-lg text-white mb-1">GTB au centre</p>
                         <p class="text-xs md:text-sm text-slate-300">
-                            Sensinov / Eficia pilotent les actions. Le transverse se limite à consolider.
+                            Actions pilotées par outils terrain. Consolidation transverse limitée.
                         </p>
                     </div>
                     <div class="info-card border-t-4 border-indigo-500">
                         <p class="font-extrabold text-xl md:text-2xl text-indigo-400 mb-2">Scénario 3</p>
                         <p class="font-semibold text-base md:text-lg text-white mb-1">Couche BI transverse</p>
                         <p class="text-xs md:text-sm text-slate-300">
-                            Qlik (direction cible) : standard de consolidation macro (direction + management) à terme.
+                            Qlik cible long terme : consolidation macro direction/management.
                         </p>
                     </div>
                 </div>
@@ -524,7 +585,7 @@
                     Partie 3 / Scénario 1
                 </p>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Scénario 1 : SAVEE pivot (le plus efficace à court terme)
+                    Scénario 1 : SAVEE pivot (2026) – le plus efficace à court terme
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
@@ -534,9 +595,9 @@
                             Ce que ça apporte
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-100 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">RUA :</span> actions + preuves au même endroit.</li>
-                            <li><span class="font-medium">Visibilité :</span> dashboards macro directionnels + lecture managériale.</li>
-                            <li><span class="font-medium">Pragmatisme :</span> industrialiser l’existant sans “big bang”.</li>
+                            <li>RUA = source de vérité : actions, preuves, clôtures, délais.</li>
+                            <li>Dashboards macro : priorités, backlog, SLA, gains.</li>
+                            <li>Industrialisation : mêmes routines, mêmes règles, même traçabilité.</li>
                         </ul>
                     </div>
                     <div class="info-card bg-amber-900/40 border-l-4 border-amber-400">
@@ -545,9 +606,9 @@
                             Conditions de réussite
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-100 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">Interfaces :</span> flux robustes outils terrain → RUA.</li>
-                            <li><span class="font-medium">Exigences :</span> traçabilité bout en bout, délais, preuve.</li>
-                            <li><span class="font-medium">Usage :</span> adoption commune DTF / régions / prestataires.</li>
+                            <li>Automatisation : création/mise à jour/clôture et preuves.</li>
+                            <li>Interop : flux robustes outils terrain → RUA.</li>
+                            <li>Gouvernance : définitions, règles de calcul, responsabilisation.</li>
                         </ul>
                     </div>
                 </div>
@@ -570,9 +631,9 @@
                             Intérêt
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Action au plus près de la dérive (réglage / programmation).</li>
-                            <li>Réactivité locale potentiellement meilleure.</li>
-                            <li>Approche cohérente si la GTB est homogène et transparente.</li>
+                            <li>Action rapide au plus près des consignes et paramètres.</li>
+                            <li>Approche cohérente si les routines sont standardisées.</li>
+                            <li>Peut être performant localement si la GTB est transparente.</li>
                         </ul>
                     </div>
 
@@ -582,9 +643,9 @@
                             Risques
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Consolidation macro difficile si chaque GTB “reste chez elle”.</li>
-                            <li>Traçabilité et preuve ISO dépendantes des outils prestataires.</li>
-                            <li>Risque de silos renforcés si les exigences ne sont pas imposées.</li>
+                            <li>Consolidation macro difficile (silos par prestataire/format).</li>
+                            <li>Traçabilité ISO dépendante des outils terrain (preuves hétérogènes).</li>
+                            <li>Risque de divergence : définitions, KPI, délais non homogènes.</li>
                         </ul>
                     </div>
                 </div>
@@ -597,7 +658,7 @@
                     Partie 3 / Scénario 3
                 </p>
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Scénario 3 : Qlik (direction cible) — standard de consolidation transverse
+                    Scénario 3 : Qlik cible long terme – consolidation transverse
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
@@ -607,9 +668,9 @@
                             Ce que ça résout
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Lecture macro directionnelle stable (risques, priorités, tendances).</li>
-                            <li>Lecture macro managériale standard (backlog, retards, délais).</li>
-                            <li>Moins de dépendance à un unique outil opérationnel.</li>
+                            <li>Lecture macro stable : risques, priorités, tendances, gains.</li>
+                            <li>Lecture management : backlog, SLA, dérives récurrentes.</li>
+                            <li>Un standard BI transverse, moins dépendant d’un outil opérationnel unique.</li>
                         </ul>
                     </div>
 
@@ -619,51 +680,62 @@
                             Positionnement
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-200 ml-4 text-xs md:text-sm">
-                            <li>Direction cible long terme : standard BI transverse.</li>
-                            <li>Pas un projet à lancer maintenant : cadrage progressif.</li>
-                            <li>Pré-requis : RUA robuste + interfaces + exigences communes.</li>
+                            <li>Cible long terme : consolidation transverse direction/management.</li>
+                            <li>Pré-requis : RUA robuste + règles communes + données propres.</li>
+                            <li>Trajectoire : construire sans “big bang”, à partir de 2026.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 14 – Synthèse & trajectoire -->
+            <!-- SLIDE 14 – Synthèse + feuille de route Décret tertiaire -->
             <section class="slide">
                 <p class="text-xs md:text-sm font-semibold text-purple-400 mb-2 uppercase flex items-center gap-2">
                     <i data-lucide="route" class="w-4 h-4"></i>
-                    Partie 3 / Synthèse & trajectoire
+                    Partie 3 / Synthèse & feuille de route
                 </p>
+
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-white">
-                    Recommandation : trajectoire pragmatique SAVEE → Qlik
+                    Recommandation : SAVEE 2026 (pivot) → Qlik (cible) + jalons Décret tertiaire
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-6 w-full">
                     <div class="info-card border-l-4 border-sky-400">
                         <p class="font-bold text-lg md:text-xl mb-3 text-sky-300 flex items-center gap-2">
                             <i data-lucide="milestone" class="w-5 h-5"></i>
-                            Trajectoire
+                            Trajectoire MDE (2026)
                         </p>
                         <ul class="list-disc list-inside space-y-2 text-slate-100 ml-4 text-xs md:text-sm">
-                            <li><span class="font-medium">2026 :</span> SAVEE renforcé (RUA + dashboards macro + usage commun).</li>
-                            <li><span class="font-medium">2026 :</span> synergie prestataires (interop, traçabilité, délais).</li>
-                            <li><span class="font-medium">Long terme :</span> Qlik cible pour consolidation transverse (direction + management).</li>
+                            <li>SAVEE renforcé : RUA automatique + dashboards macro/micro + preuves.</li>
+                            <li>Routines standardisées (ex : pass froid) + criticité/SLA.</li>
+                            <li>Synergies traduites en livrables : KPI partagés, définitions, priorisation.</li>
                         </ul>
+                        <p class="mt-3 text-[11px] text-slate-400">
+                            Objectif 2026 : rendre la chaîne “dérive → action → preuve → gain” standard et visible.
+                        </p>
                     </div>
 
                     <div class="info-card bg-emerald-900/40 border-l-4 border-emerald-400">
                         <p class="font-bold text-lg md:text-xl mb-3 text-emerald-300 flex items-center gap-2">
-                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
-                            Décision attendue
+                            <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                            Décret tertiaire : jalons à dater (proposition 2026)
                         </p>
-                        <ul class="list-disc list-inside space-y-3 text-slate-100 ml-4 text-xs md:text-sm">
-                            <li>Mandater le <span class="font-semibold text-white">RUA</span> (centralisation actions + preuves).</li>
-                            <li>Valider les <span class="font-semibold text-white">engagements de délai</span> et le pilotage hebdo des consignes.</li>
-                            <li>Valider le rôle pivot SAVEE (2026) et Qlik en cible.</li>
+                        <ul class="list-disc list-inside space-y-2 text-slate-100 ml-4 text-xs md:text-sm">
+                            <li><span class="font-semibold text-white">T1</span> : calcul avec année de référence (2019) + verrouillage méthode.</li>
+                            <li><span class="font-semibold text-white">T1</span> : surfaces : bascule SDV, suppression ambiguïtés avec SDP.</li>
+                            <li><span class="font-semibold text-white">T2</span> : catégories + sous-catégories correctes (méthode stabilisée).</li>
+                            <li><span class="font-semibold text-white">T2</span> : intégration ACI PV (autoconsommation individuelle).</li>
+                            <li><span class="font-semibold text-white">T3</span> : locataires-gérants : relance structurée + règle d’escalade si non-retour.</li>
+                            <li><span class="font-semibold text-white">T4</span> : revue annuelle de cohérence (données, périmètre, preuves d’actions).</li>
                         </ul>
-                        <p class="mt-4 font-extrabold text-sm md:text-lg text-emerald-300">
-                            Le sujet : visibilité macro & micro + traçabilité, pas une liste de cas techniques.
-                        </p>
                     </div>
+                </div>
+
+                <div class="mt-6 bg-slate-800/60 p-4 rounded-xl border border-slate-700">
+                    <p class="text-sm text-slate-200">
+                        <span class="font-semibold text-emerald-300">Décision à prendre :</span>
+                        valider la trajectoire, les règles communes (KPI/définitions), et l’exigence de traçabilité (RUA + SLA + preuve + gain).
+                    </p>
                 </div>
             </section>
 
@@ -763,7 +835,6 @@
     function updateSlide(index) {
         if (index < 0 || index >= slides.length) return;
 
-        // cacher l’ancienne
         if (slides[currentSlide]) {
             slides[currentSlide].classList.remove('slide-active');
             slides[currentSlide].style.display = 'none';
@@ -771,18 +842,14 @@
 
         currentSlide = index;
 
-        // afficher la nouvelle
         slides[currentSlide].style.display = 'flex';
         slides[currentSlide].classList.add('slide-active');
 
-        // compteur
         counterEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
 
-        // boutons
         prevBtn.disabled = currentSlide === 0;
         nextBtn.disabled = currentSlide === slides.length - 1;
 
-        // plan
         updatePlanButtons();
     }
 
@@ -809,7 +876,6 @@
         }
     });
 
-    // Plan 3 parties : aller direct à la partie
     planButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const idx = parseInt(btn.dataset.slideIndex, 10);
@@ -817,23 +883,36 @@
         });
     });
 
-    fullscreenBtn.addEventListener('click', async () => {
-        if (!document.fullscreenElement) {
-            try {
-                await deck.requestFullscreen();
-                fullscreenBtn.querySelector('span').textContent = 'Quitter le plein écran';
-                const icon = fullscreenBtn.querySelector('i[data-lucide]');
-                if (icon) icon.setAttribute('data-lucide', 'minimize-2');
-                if (window.lucide) lucide.createIcons();
-            } catch (e) {
-                console.error('Erreur plein écran :', e);
-            }
+    function setFullscreenUI(isFs) {
+        document.body.classList.toggle('is-fullscreen', isFs);
+
+        if (!fullscreenBtn) return;
+        const label = fullscreenBtn.querySelector('span');
+        const icon = fullscreenBtn.querySelector('i[data-lucide]');
+
+        if (isFs) {
+            if (label) label.textContent = 'Quitter le plein écran';
+            if (icon) icon.setAttribute('data-lucide', 'minimize-2');
         } else {
-            await document.exitFullscreen();
-            fullscreenBtn.querySelector('span').textContent = 'Plein écran';
-            const icon = fullscreenBtn.querySelector('i[data-lucide]');
+            if (label) label.textContent = 'Plein écran';
             if (icon) icon.setAttribute('data-lucide', 'maximize-2');
-            if (window.lucide) lucide.createIcons();
+        }
+        if (window.lucide) lucide.createIcons();
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+        setFullscreenUI(!!document.fullscreenElement);
+    });
+
+    fullscreenBtn.addEventListener('click', async () => {
+        try {
+            if (!document.fullscreenElement) {
+                await deck.requestFullscreen();
+            } else {
+                await document.exitFullscreen();
+            }
+        } catch (e) {
+            console.error('Erreur plein écran :', e);
         }
     });
 
@@ -848,9 +927,7 @@
             }
         });
         updateSlide(0);
-        if (window.lucide) {
-            lucide.createIcons();
-        }
+        if (window.lucide) lucide.createIcons();
     });
 </script>
 
