@@ -135,127 +135,75 @@
       </div>
     </section>
 
-    <!-- Generic items - clarified with PDCA mapping -->
-    <section class="text-center mb-10">
-      <p class="text-xs font-bold crf-blue uppercase tracking-widest mb-4">Éléments génériques partageables</p>
-
-      <div class="grid sm:grid-cols-2 gap-3 text-xs font-medium">
-        <div class="bg-gray-100 px-4 py-2 rounded flex items-center justify-center gap-2">
-          <span class="crf-blue font-bold">Planifier</span><span class="text-gray-500">-</span><span class="text-gray-700">Politique énergie</span>
+   <!-- Generic Items -->
+        <div class="text-center mb-10 px-4">
+            <p class="text-xs font-bold crf-blue uppercase tracking-widest mb-4">Éléments génériques partageables</p>
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-gray-500">
+                <span class="bg-gray-100 px-3 py-1 rounded shadow-sm">Politique énergie</span>
+                <span class="bg-gray-100 px-3 py-1 rounded shadow-sm">Attestation ISO 50001</span>
+                <span class="bg-gray-100 px-3 py-1 rounded shadow-sm">Présentation du SME</span>
+                <span class="bg-gray-100 px-3 py-1 rounded shadow-sm">Synthèse d'amélioration</span>
+            </div>
         </div>
-        <div class="bg-gray-100 px-4 py-2 rounded flex items-center justify-center gap-2">
-          <span class="crf-blue font-bold">Déployer</span><span class="text-gray-500">-</span><span class="text-gray-700">Construction de la revue de management</span>
+
+        <!-- PDCA Diagram Improved -->
+        <div class="bg-gray-50 rounded-2xl p-8 mb-10 mx-4 border border-gray-100">
+            <h4 class="text-center crf-blue font-bold mb-8 uppercase text-sm tracking-wider">Boucle d'amélioration continue</h4>
+            <div class="relative flex flex-col items-center">
+                <!-- SVG Connections -->
+                <svg class="absolute top-0 left-0 w-full h-full pointer-events-none hidden md:block" viewBox="0 0 400 300">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#ED1B2F" />
+                        </marker>
+                    </defs>
+                    <!-- Horizontal top -->
+                    <path d="M160 60 L240 60" stroke="#ED1B2F" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <!-- Vertical right -->
+                    <path d="M300 110 L300 190" stroke="#ED1B2F" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <!-- Horizontal bottom -->
+                    <path d="M240 240 L160 240" stroke="#ED1B2F" stroke-width="2" marker-end="url(#arrowhead)" />
+                    <!-- Vertical left -->
+                    <path d="M100 190 L100 110" stroke="#ED1B2F" stroke-width="2" marker-end="url(#arrowhead)" />
+                </svg>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-32 gap-y-12 relative z-10 w-full max-w-2xl">
+                    <!-- PLANIFIER -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-32 h-32 rounded-full border-4 crf-border-blue bg-white flex flex-col items-center justify-center p-2 shadow-md">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase">Planifier</span>
+                            <span class="text-xs font-black crf-blue leading-tight">Politique énergie</span>
+                        </div>
+                    </div>
+                    <!-- DEPLOYER -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-32 h-32 rounded-full border-4 crf-border-blue bg-white flex flex-col items-center justify-center p-2 shadow-md">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase">Déployer</span>
+                            <span class="text-xs font-black crf-blue leading-tight">Revue de management</span>
+                        </div>
+                    </div>
+                    <!-- AMELIORER (Placement gauche pour la boucle) -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-32 h-32 rounded-full border-4 crf-border-blue bg-white flex flex-col items-center justify-center p-2 shadow-md">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase">Améliorer</span>
+                            <span class="text-xs font-black crf-blue leading-tight">Plan d'action NC & points sensibles</span>
+                        </div>
+                    </div>
+                    <!-- MESURER -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-32 h-32 rounded-full border-4 crf-border-blue bg-white flex flex-col items-center justify-center p-2 shadow-md">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase">Mesurer</span>
+                            <span class="text-xs font-black crf-blue leading-tight">Audit annuel & Revue énergétique</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="bg-gray-100 px-4 py-2 rounded flex items-center justify-center gap-2">
-          <span class="crf-blue font-bold">Mesurer</span><span class="text-gray-500">-</span><span class="text-gray-700">Audit ISO 50001 tous les ans et construction de la revue énergétique</span>
+
+        <!-- Footer -->
+        <div class="text-center pb-8 px-4">
+            <p class="text-[10px] text-gray-400 max-w-xl mx-auto italic leading-relaxed">Document générique à usage informatif. Ne présente ni périmètre détaillé, ni organisation interne, ni outils, ni données opérationnelles spécifiques.</p>
         </div>
-        <div class="bg-gray-100 px-4 py-2 rounded flex items-center justify-center gap-2">
-          <span class="crf-blue font-bold">Améliorer</span><span class="text-gray-500">-</span><span class="text-gray-700">Plan d'action sur les non-conformités et points sensibles</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PDCA Diagram - clearer mapping + arrows -->
-    <section class="mb-14 px-4">
-      <h3 class="text-lg font-bold crf-blue mb-2 border-l-4 crf-border-blue pl-4">Boucle PDCA - du cadre à l'action</h3>
-      <p class="text-sm text-gray-600 mb-8">
-        Pour que ce soit lisible, chaque étape est reliée à un livrable simple et partageable.
-      </p>
-
-      <div class="flex justify-center">
-        <div class="w-full max-w-2xl">
-          <div class="grid grid-cols-3 grid-rows-3 gap-4 items-center justify-items-center">
-
-            <!-- Planifier -->
-            <div class="flex flex-col items-center gap-2">
-              <div class="border-2 crf-border-blue bg-white crf-blue font-bold rounded-full w-28 h-28 flex items-center justify-center text-center text-sm shadow-sm">
-                Planifier
-              </div>
-              <div class="text-[11px] text-gray-600 text-center leading-snug max-w-[12rem]">
-                Politique énergie
-              </div>
-            </div>
-
-            <!-- Arrow right -->
-            <div class="crf-red">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </div>
-
-            <!-- Déployer -->
-            <div class="flex flex-col items-center gap-2">
-              <div class="border-2 crf-border-blue bg-white crf-blue font-bold rounded-full w-28 h-28 flex items-center justify-center text-center text-sm shadow-sm">
-                Déployer
-              </div>
-              <div class="text-[11px] text-gray-600 text-center leading-snug max-w-[12rem]">
-                Construction de la revue de management
-              </div>
-            </div>
-
-            <!-- Arrow up (Améliorer -> Planifier) -->
-            <div class="crf-red">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
-              </svg>
-            </div>
-
-            <!-- Center (empty) -->
-            <div class="text-xs text-gray-400 text-center leading-tight">
-              PDCA
-            </div>
-
-            <!-- Arrow down (Déployer -> Mesurer) -->
-            <div class="crf-red">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
-              </svg>
-            </div>
-
-            <!-- Améliorer -->
-            <div class="flex flex-col items-center gap-2">
-              <div class="border-2 crf-border-blue bg-white crf-blue font-bold rounded-full w-28 h-28 flex items-center justify-center text-center text-sm shadow-sm">
-                Améliorer
-              </div>
-              <div class="text-[11px] text-gray-600 text-center leading-snug max-w-[12rem]">
-                Plan d'action sur les non-conformités et points sensibles
-              </div>
-            </div>
-
-            <!-- Arrow left (Mesurer -> Améliorer) -->
-            <div class="crf-red">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
-              </svg>
-            </div>
-
-            <!-- Mesurer -->
-            <div class="flex flex-col items-center gap-2">
-              <div class="border-2 crf-border-blue bg-white crf-blue font-bold rounded-full w-28 h-28 flex items-center justify-center text-center text-sm shadow-sm">
-                Mesurer
-              </div>
-              <div class="text-[11px] text-gray-600 text-center leading-snug max-w-[12rem]">
-                <span class="block">Audit ISO 50001 tous les ans</span>
-                <span class="block">Construction de la revue énergétique</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center pb-6">
-      <p class="text-[10px] text-gray-400 max-w-xl mx-auto italic">
-        Contenu volontairement générique, sans détail de périmètre ni d'organisation interne.
-      </p>
-    </footer>
-
-  </main>
+    </div>
 </body>
 </html>
